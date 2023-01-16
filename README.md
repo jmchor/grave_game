@@ -48,7 +48,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ### ghoul.js
 
-## States y States Transitions
+## States & States Transitions
 
 - splashScreen (Backstory, Controls, StartGame)
 - GameScreen
