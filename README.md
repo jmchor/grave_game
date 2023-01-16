@@ -1,2 +1,72 @@
-# grave_game
-Repo for "Grave", a simple 2d browser game.
+# Grave - can you escape?
+
+[Click here to see deployed game](http://github.com)
+
+## Description
+
+The Grave is a maze of walls the player has to maneuver through. In order to escape the map (and win the game), the player has to collect a key, find the corresponding door and escape the grave.
+
+## MVP (DOM - CANVAS)
+
+- one player character who can move in four directions (vertically and horizontally)
+- walls on map are impenetrable
+- player can pick up items (key, powerup)
+- key unlocks door to escape
+- powerup makes player briefly invincible
+- ghosts/zombies/ghouls walk the tomb in either horizontal or vertical paths
+- ghosts kill player
+- time based high score (subtracting from a fixed highscore every second)
+-
+-
+
+## Backlog
+
+- powerups: freeze time
+- pause/unpause
+- player inventory: display keys
+- only render visible circle around player (rest of map is black)
+- "Race against Time" - mode (Countdown) --> display timer
+- attack ghosts with weapon
+- add treasure / collectibles for higher score
+- display score
+
+## Data structure
+
+### main.js
+
+### DOM.js
+
+### game.js
+
+### template.js
+
+### map.js
+
+### player.js
+
+### item.js
+
+### ghoul.js
+
+## States y States Transitions
+
+- splashScreen (Backstory, Controls, StartGame)
+- GameScreen
+- GameOverScreen
+
+## Task
+
+- main - create canvas & position it in center
+- map - create 2d array and Wall Class
+- player - create player & keyEvents (controls & pickup)
+- item - create key
+- item - create door
+- ghoul -create nameless ghoul
+-
+
+## Links
+
+- [Trello Link](https://trello.com)
+- [Slides Link](http://slides.com)
+- [Github repository Link](http://github.com)
+- [Deployment Link](http://github.com)
