@@ -1,6 +1,6 @@
 # Grave - can you escape?
 
-[Click here to see deployed game](http://github.com)
+(Click here to see the deployed game when it is finished)
 
 ## Description
 
@@ -12,7 +12,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 - walls on map are impenetrable
 - player can pick up items (key, powerup)
 - key unlocks door to escape
-- powerup makes player briefly invincible
+- power up makes player briefly invincible
 - ghosts/zombies/ghouls walk the tomb in either horizontal or vertical paths
 - ghosts kill player
 - time based high score (subtracting from a fixed highscore every second)
@@ -21,7 +21,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ## Backlog
 
-- powerups: freeze time
+- power ups: freeze time
 - pause/unpause
 - player inventory: display keys
 - only render visible circle around player (rest of map is black)
