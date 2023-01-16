@@ -6,7 +6,7 @@ class Template {
         this.w = w
         this.h = h
         if (color) this.color = color
-        this.img = img
+        if (img) this.img = img
     }
 
     draw () {
@@ -14,7 +14,6 @@ class Template {
         if (this.img) {
             ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
         }
-
         else if (this.color) {
             ctx.fillStyle = this.color
             ctx.fillRect(this.x, this.y, this.w, this.h)
@@ -22,8 +21,14 @@ class Template {
     }
 
     clear() {
-
         clearRect(0,0,canvas.width, canvas.height)
+    }
+
+    detectCollision (target1, target2) {
 
     }
+
+
+
+
 }
