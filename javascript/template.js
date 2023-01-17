@@ -1,5 +1,5 @@
 class Template {
-    constructor (x, y, w, h, color) {
+    constructor (x, y, w, h, color, img) {
 
         this.x = x
         this.y = y
