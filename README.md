@@ -8,7 +8,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ## MVP (DOM - CANVAS)
 
-- one player character who can move in four directions (vertically and horizontally)
+- ~one player character who can move in four directions (vertically and horizontally)~
 - walls on map are impenetrable
 - player can pick up items (key, powerup)
 - key unlocks door to escape
