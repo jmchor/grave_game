@@ -42,24 +42,25 @@ let map = [
 
 ]
 
-
-map.forEach((row, index) => {
-    row.forEach((cell, count) => {
-        switch (cell) {
-            case '-':
-                walls.push(
-                    new Wall(25 * count, 25 * index, 25, 25, 'black')
-                )
-
-                break;
-
-            default:
-                break;
-        }
+function drawMap(){
+    map.forEach((row, index) => {
+        row.forEach((cell, count) => {
+            switch (cell) {
+                case '-':
+                    walls.push(
+                        new Wall(25 * count, 25 * index, 25, 25, 'black')
+                    )
+                    break;
+                default:
+                    break;
+            }
+        })
     })
-})
 
-walls.forEach(wall => {
-    wall.draw()
-})
+    walls.forEach(wall => {
+        wall.draw()
+    })
+
+}
+
 

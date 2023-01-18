@@ -2,7 +2,7 @@ class Player extends Template {
 
     constructor(x,y,w,h,color) {
         super(x,y,w,h,color);
-        this.speed = 10;
+        this.speed = 5;
     }
 
     updateMovement() {

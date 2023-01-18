@@ -1,4 +1,5 @@
 
+let player = new Player(50, 700, 50, 50, 'brown');
 
 const graveSite = {
 
@@ -13,36 +14,35 @@ const graveSite = {
     startGame: function() {
         graveSite.isGameOver = false;
         graveSite.isGamePaused = false;
-        player = new Player(50, 700, 50, 50, 'brown');
+
         player.draw();
     },
 
     update: function() {
 
         if (graveSite.isLeftKeyPressed) {
-            graveSite.player.moveLeft();
+            player.moveLeft();
         }
         if (graveSite.isRightKeyPressed) {
-            graveSite.player.moveRight();
+            player.moveRight();
         }
         if (graveSite.isUpKeyPressed) {
-            graveSite.player.moveUp();
+            player.moveUp();
         }
         if (graveSite.isDownKeyPressed) {
-            graveSite.player.moveDown();
+            player.moveDown();
         }
+
+        player.updateMovement();
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawMap()
+        player.draw();
     },
 
-    keyControls: function() {
-        document.addEventListener('keydown', function(e) {
-
-            switch (e.key) {
-                case 'ArrowLeft':
-                    player.moveLeft()
-                    graveSite.isLeftKeyPressed = true;
-                    break;
 
 
-} })}}
+}
+
 
     // The game's objects
