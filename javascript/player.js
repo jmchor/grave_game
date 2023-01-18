@@ -5,8 +5,9 @@ class Player extends Template {
         this.speed = 10;
     }
 
-    update() {
-        this.move();
+    updateMovement() {
+        this.clear()
+        this.draw()
     }
 
     moveUp() {

@@ -21,7 +21,7 @@ class Template {
     }
 
     clear() {
-        clearRect(0,0,canvas.width, canvas.height)
+        clearRect(this.x, this.y, this.w, this.h)
     }
 
     detectCollision (target1, target2) {
