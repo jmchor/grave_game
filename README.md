@@ -56,9 +56,11 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ## Task
 
-- main - create canvas & position it in center
-- map - create 2d array and Wall Class
+- ~main - create canvas & position it in center~
+- ~map - create 2d array and Wall Class~
+- map - make walls impenetrable with collision detection
 - player - create player & keyEvents (controls & pickup)
+- player - create pickup functionality
 - item - create key
 - item - create door
 - ghoul -create nameless ghoul
