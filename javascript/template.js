@@ -24,9 +24,7 @@ class Template {
         ctx.clearRect(this.x, this.y, this.w, this.h)
     }
 
-    detectCollision (target1, target2) {
 
-    }
 
 
 
