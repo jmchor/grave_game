@@ -51,12 +51,6 @@ function drawMap(){
                         new Wall(25 * count, 25 * index, 25, 25, 'black')
                     )
                     break;
-                case 'D':
-                    walls.push(
-                        new Wall(25 * count, 25 * index, 25, 25, 'blue')
-                    )
-                    break;
-
 
                 default:
                     break;

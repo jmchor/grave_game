@@ -3,6 +3,13 @@ let player = new Player(50, 650, 40, 40, 'brown');
 let key = new Template(1100, 650, 20, 40, 'blue')
 let door = new Template(1100, 50, 40, 80, 'green')
 
+
+
+walls.forEach(wall => {
+    wall.draw();
+
+})
+
 let keyPlace = [key]
 let inventory = []
 
@@ -21,7 +28,6 @@ const graveSite = {
         graveSite.isGameOver = false;
         graveSite.isGamePaused = false;
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMap()
         player.draw();
         door.draw()
@@ -36,14 +42,13 @@ const graveSite = {
 
         if (graveSite.isGamePaused) return
 
-
         walls.forEach(wall => {
             if (player.detectCollision(wall)) {
                 let previousY = player.y - player.velocity.y;
                 let previousX = player.x - player.velocity.x;
                 player.velocity.x = 0;
                 player.velocity.y = 0;
-                player.x = previousX
+                player.x = previousX;
                 player.y = previousY;
 
             };
@@ -66,12 +71,15 @@ const graveSite = {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMap()
+
         player.draw();
         door.draw()
 
        getKey()
 
+       console.log("update")
 
+e
     }
 }
 
