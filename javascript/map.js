@@ -58,8 +58,9 @@ function drawMap(){
     })
 
     walls.forEach(wall => {
-        wall.draw()
-    })
+        wall.draw();
+
+})
 
 }
 
