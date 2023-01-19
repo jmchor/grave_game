@@ -39,21 +39,11 @@ const graveSite = {
     },
 
     update: function() {
-
+        walls = []
 
         if (graveSite.isGamePaused) return
 
-        walls.forEach(wall => {
-            if (player.detectCollision(wall)) {
-                let previousY = player.y - player.velocity.y;
-                let previousX = player.x - player.velocity.x;
-                player.velocity.x = 0;
-                player.velocity.y = 0;
-                player.x = previousX;
-                player.y = previousY;
 
-            };
-        })
 
 
         if (graveSite.isLeftKeyPressed) {
@@ -72,6 +62,17 @@ const graveSite = {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMap()
+        walls.forEach(wall => {
+            if (player.detectCollision(wall)) {
+                let previousY = player.y - player.velocity.y;
+                let previousX = player.x - player.velocity.x;
+                player.velocity.x = 0;
+                player.velocity.y = 0;
+                player.x = previousX;
+                player.y = previousY;
+
+            };
+        })
 
         player.draw();
         door.draw()
