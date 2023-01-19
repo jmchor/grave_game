@@ -2,13 +2,9 @@ class Player extends Template {
 
     constructor(x,y,w,h,color) {
         super(x,y,w,h,color);
-
         this.velocity = {x: 0, y: 0}
 
-
     }
-
-
 
     update() {
         this.draw()
@@ -53,10 +49,7 @@ class Player extends Template {
             };
         };
 
-
-
     }
-
 
 
     function getKey (){
@@ -67,7 +60,7 @@ class Player extends Template {
             key.draw()
         }
         if(graveSite.hasDoorKey) {
-            key.clear()
+            key.y = -1000
             keyPlace.pop()
             inventory.push(key)
         }
@@ -78,7 +71,6 @@ class Player extends Template {
         }
 
     }
-
 
     function openDoor() {
 
