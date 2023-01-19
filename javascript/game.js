@@ -1,5 +1,6 @@
 
-let player = new Player(50, 700, 50, 50, 'brown');
+let player = new Player(50, 700, 40, 40, 'brown');
+let key = new Template(1100, 700, 20, 40, 'blue')
 
 const graveSite = {
 
@@ -16,6 +17,7 @@ const graveSite = {
         graveSite.isGamePaused = false;
 
         player.draw();
+        key.draw();
     },
 
     update: function() {
@@ -38,6 +40,7 @@ const graveSite = {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMap()
         player.draw();
+        key.draw()
 
         walls.forEach(wall => {
             if (player.detectCollision(wall)) {
