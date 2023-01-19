@@ -23,6 +23,10 @@ document.addEventListener('keydown', function(e) {
                 player.moveDown()
                 break;
 
+            case 'Enter':
+                if (graveSite.hasDoorKey) {
+                    openDoor() }
+
                 default:
                     return;
         }})
