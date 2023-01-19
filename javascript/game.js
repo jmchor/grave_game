@@ -40,6 +40,7 @@ const graveSite = {
 
     update: function() {
 
+
         if (graveSite.isGamePaused) return
 
         walls.forEach(wall => {
@@ -79,7 +80,9 @@ const graveSite = {
 
        console.log("update")
 
-e
+       requestAnimationFrame(graveSite.update)
+
+
     }
 }
 
