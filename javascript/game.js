@@ -1,7 +1,8 @@
 
-let player = new Player(50, 650, 40, 40, 'brown');
+let player = new Player(50, 650, 50, 50, 'brown');
 let key = new Template(1100, 650, 20, 40, 'blue')
 let door = new Template(1100, 50, 40, 80, 'green')
+let currentTime = 0;
 
 
 
@@ -31,6 +32,7 @@ const graveSite = {
         drawMap()
         player.draw();
         door.draw()
+        graveSite.displayTime()
 
         if (keyPlace.includes(key)) {
             key.draw()
@@ -38,7 +40,28 @@ const graveSite = {
 
     },
 
+    getSeconds: function() {
+       return Math.floor(currentTime % 60);
+    },
+
+    getMinutes: function() {
+        return Math.floor(currentTime / 60);
+    },
+
+    displayTime: function() {
+        let seconds = graveSite.getSeconds();
+        let minutes = graveSite.getMinutes();
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 750, 150, 50);
+        ctx.fillStyle = 'white';
+        ctx.font = '20px Arial';
+        ctx.fillText(`Time: ${minutes}:${seconds}`, 10,780);
+    },
+
+
     update: function() {
+
+
         walls = []
 
         if (graveSite.isGamePaused) return
@@ -76,6 +99,7 @@ const graveSite = {
 
         player.draw();
         door.draw()
+        graveSite.displayTime()
 
        getKey()
 
