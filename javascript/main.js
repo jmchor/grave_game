@@ -6,3 +6,9 @@
 
 
 graveSite.update();
+
+
+
+setInterval(() => {
+    currentTime += 1;
+    }, 1000);
