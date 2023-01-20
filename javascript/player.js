@@ -1,8 +1,12 @@
 class Player extends Template {
 
-    constructor(x,y,w,h,color) {
-        super(x,y,w,h,color);
+    constructor(x,y,w,h,img) {
+        super(x,y,w,h,img);
         this.velocity = {x: 0, y: 0}
+        this.img = new Image();
+        this.img.src = 'img/manUp.png'
+
+
 
     }
 
@@ -13,19 +17,27 @@ class Player extends Template {
     }
 
     moveUp() {
-        this.velocity.y = -10;
+        this.velocity.y = -5;
+        this.img = new Image();
+        this.img.src = 'img/manUp.png'
     }
     moveDown() {
-        this.velocity.y = 10;
+        this.velocity.y = 5;
+        this.img = new Image();
+        this.img.src = 'img/manDown.png'
+
 
     }
     moveLeft() {
-       this.velocity.x = -10;
+       this.velocity.x = -5;
+       this.img = new Image();
+        this.img.src = 'img/manLeft.png'
 
     }
     moveRight() {
-
-        this.velocity.x = 10;
+        this.velocity.x = 5;
+        this.img = new Image();
+        this.img.src = 'img/manRight.png'
 
     }
 
@@ -83,6 +95,8 @@ class Player extends Template {
             ctx.font = '50px Arial'
             ctx.fillStyle = 'white'
             ctx.fillText('You Win!', 500, 400)
+            ctx.font = '20px Arial'
+            ctx.fillText(`You escaped in ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`, 420, 450)
 
         }
     }
