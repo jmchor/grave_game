@@ -1,6 +1,9 @@
 class Wall extends Template {
-    constructor (x, y, w, h, color) {
-        super(x, y, w, h, color)
+    constructor (x, y, w, h, img) {
+        super(x, y, w, h, img)
+
+        this.img = new Image();
+        this.img.src = 'img/RockWall(orFloor)_specular.png'
 
     }
 }
