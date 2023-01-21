@@ -32,7 +32,7 @@ body {
     background-size: cover;
 }
 
-#splash-screen,#pause-screen, #key-screen, #game-over {
+#splash-screen,#pause-screen, #key-screen{
     width: 1000px;
     height: 600px;
     position: absolute;
@@ -53,14 +53,9 @@ body {
 
 }
 
-#pause-screen, #key-screen, #game-over {
+#pause-screen, #key-screen {
     width: 500px;
     height: 300px;
     display: none;
 }
 
-#game-over {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
