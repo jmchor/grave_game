@@ -3,7 +3,10 @@ const ctx = canvas.getContext('2d')
 const splashScreen = document.getElementById('splash-screen')
 const pauseScreen = document.getElementById('pause-screen')
 const keyScreen = document.getElementById('key-screen')
-const restartButton = document.getElementById('game-over')
+const winScreen = document.getElementById('win-screen')
+const winScore = document.getElementById('win-score')
+const loseScore = document.getElementById('lose-score')
+const loseScreen = document.getElementById('lose-screen')
 
 
 
@@ -71,20 +74,19 @@ window.addEventListener('keydown', function(e) {
         if (graveSite.hasDoorKey && graveSite.isGamePaused === false) {
             openDoor()
         }
-        else if (!graveSite.hasDoorKey && graveSite.hasPlayerWon === false && graveSite.hasPlayerLost === false) {
+        else if (!graveSite.hasDoorKey && graveSite.hasPlayerWon === false && graveSite.hasPlayerLost === false && graveSite.hasGameStarted && player.detectCollision(door)) {
             keyScreen.style.display = 'flex'
         }
         else if (graveSite.isGameOver && graveSite.hasPlayerWon) {
+            winScreen.style.display = 'none'
             graveSite.restartGame()
         }
         else if (graveSite.isGameOver && graveSite.hasPlayerLost) {
+            loseScreen.style.display = 'none'
             graveSite.restartGame()
+        } else if (graveSite.hasGameStarted === false && graveSite.isGameOver === false && graveSite.isGamePaused === false) {
+            return
         }
-
-
-
-
-
 
 
 
@@ -118,6 +120,8 @@ window.addEventListener('keydown', function(e) {
             pauseScreen.style.display = 'none';
             keyScreen.style.display = 'none';
             graveSite.update()
-        }
+        } else if (e.key === 'Escape' && graveSite.isGameOver === true) {
+            return  }
+
     })
 
