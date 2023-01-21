@@ -3,7 +3,7 @@ let player = new Player(50, 610, 50, 50, 'brown');
 let key = new Key(1100, 650, 20, 40, 'img/key-blue.png')
 let door = new Template(1100, 50, 40, 80, 'green')
 let currentTime = 0;
-
+let timer;
 let ghoul = new Ghoul(400, 300, 50, 50, 'pink')
 let skeleton = new Skeleton(1100, 300, 50, 50, 'grey', {x: -5, y: 0})
 let skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
@@ -35,7 +35,7 @@ const graveSite = {
 
 
     startGame: function() {
-        setInterval(() => {
+        timer = setInterval(() => {
             currentTime += 1;
             }, 1000);
 
@@ -57,6 +57,7 @@ const graveSite = {
 
     restartGame: function() {
         currentTime = 0;
+        clearInterval(timer);
         player.x = 50;
         player.y = 610;
         graveSite.isGameOver = false;
