@@ -92,6 +92,7 @@ class Player extends Template {
        else if (player.doorCollision(door) && graveSite.hasDoorKey) {
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
+            graveSite.hasPlayerWon = true;
             ctx.clearRect(0,0,canvas.width, canvas.height)
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)
@@ -112,6 +113,7 @@ class Player extends Template {
             console.log("You've been caught!")
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
+            graveSite.hasPlayerLost = true;
             ctx.clearRect(0,0,canvas.width, canvas.height)
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)

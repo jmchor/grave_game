@@ -61,6 +61,7 @@ document.addEventListener('keydown', function(e) {
                 default:
                     return;
         };
+
     });
 
 window.addEventListener('keydown', function(e) {
@@ -70,13 +71,16 @@ window.addEventListener('keydown', function(e) {
         if (graveSite.hasDoorKey && graveSite.isGamePaused === false) {
             openDoor()
         }
-        else if (!graveSite.hasDoorKey){
-            graveSite.isGamePaused = true;
+        else if (!graveSite.hasDoorKey && graveSite.hasPlayerWon === false && graveSite.hasPlayerLost === false) {
             keyScreen.style.display = 'flex'
         }
-        else if (graveSite.isGameOver && graveSite.isGamePaused) {
+        else if (graveSite.isGameOver && graveSite.hasPlayerWon) {
             graveSite.restartGame()
         }
+        else if (graveSite.isGameOver && graveSite.hasPlayerLost) {
+            graveSite.restartGame()
+        }
+
 
 
 

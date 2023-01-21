@@ -30,6 +30,8 @@ const graveSite = {
     isUpKeyPressed: false,
     isDownKeyPressed: false,
     hasDoorKey: false,
+    hasPlayerWon: false,
+    hasPlayerLost: false,
 
 
     startGame: function() {
