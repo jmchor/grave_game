@@ -96,12 +96,9 @@ class Player extends Template {
             ctx.clearRect(0,0,canvas.width, canvas.height)
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)
-            ctx.font = '50px Arial'
-            ctx.fillStyle = 'white'
-            ctx.fillText('You Win!', 500, 400)
-            ctx.font = '20px Arial'
-            ctx.fillText(`You escaped in ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`, 420, 450)
-            ctx.fillText('Press Enter to restart the game!', 450, 500)
+            winScreen.style.display = 'flex'
+            winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`
+
 
 
         }
@@ -117,12 +114,8 @@ class Player extends Template {
             ctx.clearRect(0,0,canvas.width, canvas.height)
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)
-            ctx.font = '50px Arial'
-            ctx.fillStyle = 'white'
-            ctx.fillText('Game Over', 500, 400)
-            ctx.font = '20px Arial'
-            ctx.fillText(`You were caught after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`, 420, 450)
-            ctx.fillText('Press Enter to restart the game!', 450, 500)
+            loseScreen.style.display = 'flex'
+            loseScore.innerHTML = `The ghouls got to you after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`
 
 
 
