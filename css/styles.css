@@ -24,6 +24,6 @@ body {
 #canvas {
 
     border: 1px solid black;
-    background-color: white;
-
+    background-image: url('../img/bright_floor.png');
+    background-size: cover;
 }
