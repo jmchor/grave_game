@@ -100,3 +100,21 @@ class Player extends Template {
 
         }
     }
+
+    function encounterEnemy() {
+
+        if (player.detectCollision(ghoul)) {
+            console.log("You've been caught!")
+            graveSite.isGameOver = true;
+            graveSite.isGamePaused = true;
+            ctx.clearRect(0,0,canvas.width, canvas.height)
+            ctx.fillStyle = 'black'
+            ctx.fillRect(0,0,canvas.width, canvas.height,)
+            ctx.font = '50px Arial'
+            ctx.fillStyle = 'white'
+            ctx.fillText('Game Over', 500, 400)
+            ctx.font = '20px Arial'
+            ctx.fillText(`You were caught after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`, 420, 450)
+
+        }
+    }
