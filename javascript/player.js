@@ -86,7 +86,10 @@ class Player extends Template {
 
     function openDoor() {
 
-        if (player.doorCollision(door) && graveSite.hasDoorKey) {
+        if (player.doorCollision(door) && graveSite.hasDoorKey === false) {
+         }
+
+       else if (player.doorCollision(door) && graveSite.hasDoorKey) {
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
             ctx.clearRect(0,0,canvas.width, canvas.height)
@@ -97,13 +100,15 @@ class Player extends Template {
             ctx.fillText('You Win!', 500, 400)
             ctx.font = '20px Arial'
             ctx.fillText(`You escaped in ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`, 420, 450)
+            ctx.fillText('Press Enter to restart the game!', 450, 500)
+
 
         }
     }
 
-    function encounterEnemy() {
+    function encounterEnemy(enemy) {
 
-        if (player.detectCollision(ghoul) || player.detectCollision(skeleton) || player.detectCollision(skeleton2)) {
+        if (player.detectCollision(enemy)) {
             console.log("You've been caught!")
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
@@ -115,6 +120,9 @@ class Player extends Template {
             ctx.fillText('Game Over', 500, 400)
             ctx.font = '20px Arial'
             ctx.fillText(`You were caught after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`, 420, 450)
+            ctx.fillText('Press Enter to restart the game!', 450, 500)
+
+
 
         }
     }
