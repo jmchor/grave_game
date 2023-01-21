@@ -1,57 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Grave - can you escape?</title>
-</head>
-<body>
 
-    <canvas id="canvas" width="1200" height="800"> ></canvas>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <title>Grave - can you escape?</title>
+    </head>
 
-    <div id="splash-screen">
-        <h1>Grave - can you escape?</h1>
-        <div>
-            <p style ="font-size: 26px;">A second ago, you could feel a light draft of cold air from up the stairs you just descend. But with a thudding noise - stillness. No air. You are locked in this grave.
-                <br>
-                <br>
-                Will it be yours?</p>
-            <p>Use the arrow keys to move around the tomb. Avoid the ghouls and skeletons and whatnot, find the key and find the exit.</p>
+    <body>
+
+        <canvas id="canvas" width="1200" height="800"> ></canvas>
+
+        <div id="splash-screen">
+            <h1>Grave - can you escape?</h1>
+            <div>
+                <p style="font-size: 26px;">A second ago, you could feel a light draft of cold air from up the stairs
+                    you just descend. But with a thudding noise - stillness. No air. You are locked in this grave.
+                    <br>
+                    <br>
+                    Will it be yours?
+                </p>
+                <p>Use the arrow keys to move around the tomb. Avoid the ghouls and skeletons and whatnot, find the key
+                    and find the exit.</p>
+            </div>
+
+            <div>
+                <p>Press the Spacebar to start!</p>
+            </div>
         </div>
 
-        <div>
-            <p>Press the Spacebar to start!</p>
+
+        <div id="pause-screen">
+            <div>
+                <h1> GAME PAUSED</h1>
+                <h3>Press ESC to resume</h3>
+            </div>
         </div>
-    </div>
-
-
-    <div id="pause-screen">
-        <div>
-            <h1> GAME PAUSED</h1>
-            <h3>Press ESC to resume</h3>
+        <div id="key-screen">
+            <div>
+                <h1> GET THE KEY</h1>
+                <h3>Press ESC to resume</h3>
+            </div>
         </div>
-    </div>
-    <div id="key-screen">
-        <div>
-            <h1> GET THE KEY</h1>
-            <h3>Press ESC to resume</h3>
+        <div id="win-screen">
+            <div>
+                <h1>You Won!</h1>
+                <div id="win-score"></div>
+                <h3>Press Enter to restart</h3>
+            </div>
         </div>
-    </div>
+        <div id="lose-screen">
+            <div>
+                <h1>You Died!</h1>
+                <div id="lose-score"></div>
+                <h3>Press Enter to restart</h3>
+            </div>
+        </div>
 
 
 
-    <script src="./javascript/template.js"></script>
-    <script src="./javascript/player.js"></script>
-    <script src="./javascript/ghoul.js"></script>
-    <script src="./javascript/map.js"></script>
-    <script src="./javascript/game.js"></script>
-    <script src="./javascript/DOM.js"></script>
-    <script src="./javascript/main.js"></script>
+        <script src="./javascript/template.js"></script>
+        <script src="./javascript/player.js"></script>
+        <script src="./javascript/ghoul.js"></script>
+        <script src="./javascript/map.js"></script>
+        <script src="./javascript/game.js"></script>
+        <script src="./javascript/DOM.js"></script>
+        <script src="./javascript/main.js"></script>
 
 
 
 
-</body>
+    </body>
+
 </html>
