@@ -3,6 +3,7 @@ let player = new Player(50, 620, 50, 50, 'brown');
 let key = new Key(1100, 650, 20, 40, 'img/key-blue.png')
 let door = new Template(1100, 50, 40, 80, 'green')
 let currentTime = 0;
+let check1 = new Template (300, 300, 5, 5, 'black')
 
 
 
@@ -32,6 +33,7 @@ const graveSite = {
         drawMap()
         player.draw();
         door.draw()
+        check1.draw()
         graveSite.displayTime()
 
         if (keyPlace.includes(key)) {
@@ -99,6 +101,8 @@ const graveSite = {
 
         player.draw();
         door.draw()
+        check1.draw()
+
         graveSite.displayTime()
 
        getKey()
