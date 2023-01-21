@@ -35,6 +35,10 @@ const graveSite = {
 
 
     startGame: function() {
+        setInterval(() => {
+            currentTime += 1;
+            }, 1000);
+
 
         graveSite.hasGameStarted = true;
 
