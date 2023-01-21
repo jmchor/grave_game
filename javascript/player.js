@@ -42,10 +42,10 @@ class Player extends Template {
     }
 
     detectCollision(target) {
-        if (this.y + this.velocity.y <= target.y + target.h  &&
-            this.x + this.w + this.velocity.x >= target.x &&
-            this.y + this.h + this.velocity.y >= target.y &&
-            this.x + this.velocity.x <= target.x + target.w)
+        if (this.y + this.velocity.y  + 15 <= target.y + target.h  &&
+            this.x + this.w + this.velocity.x -15 >= target.x &&
+            this.y + this.h + this.velocity.y  - 15>= target.y &&
+            this.x + this.velocity.x + 15  <= target.x + target.w)
             {
                 return true
             };
@@ -103,7 +103,7 @@ class Player extends Template {
 
     function encounterEnemy() {
 
-        if (player.detectCollision(ghoul)) {
+        if (player.detectCollision(ghoul) || player.detectCollision(skeleton) || player.detectCollision(skeleton2)) {
             console.log("You've been caught!")
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
