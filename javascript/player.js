@@ -77,7 +77,7 @@ class Player extends Template {
             inventory.push(key)
         }
         if (inventory.includes(key)) {
-            let inventoryKey = new Template (1100, 750, 20, 40, 'blue')
+            let inventoryKey = new Key (1100, 750, 20, 40, 'blue')
             inventoryKey.draw()
 
         }
