@@ -63,3 +63,10 @@ body {
 #lose-screen {
 	display: none;
 }
+
+#win-screen {
+	background-color: rgba(245, 245, 10, 0.9);
+	color: black;
+	font-size: 50px;
+	font-family: 'Work Sans';
+}
