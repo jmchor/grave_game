@@ -1,5 +1,12 @@
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
+const splashScreen = document.getElementById('splash-screen')
+const pauseScreen = document.getElementById('pause-screen')
+const keyScreen = document.getElementById('key-screen')
+const restartButton = document.getElementById('game-over')
+
+
+
 
 document.addEventListener('keydown', function(e) {
 
@@ -21,10 +28,6 @@ document.addEventListener('keydown', function(e) {
                 graveSite.isDownKeyPressed = true;
                 player.moveDown()
                 break;
-
-            case 'Enter':
-                if (graveSite.hasDoorKey) {
-                    openDoor() }
 
                 default:
                     return;
@@ -60,6 +63,57 @@ document.addEventListener('keydown', function(e) {
         };
     });
 
+window.addEventListener('keydown', function(e) {
+
+    if (e.key === 'Enter') {
+
+        if (graveSite.hasDoorKey && graveSite.isGamePaused === false) {
+            openDoor()
+        }
+        else if (!graveSite.hasDoorKey){
+            graveSite.isGamePaused = true;
+            keyScreen.style.display = 'flex'
+        }
+        else if (graveSite.isGameOver && graveSite.isGamePaused) {
+            graveSite.restartGame()
+        }
 
 
+
+
+
+
+
+    }
+
+})
+
+
+
+
+
+window.addEventListener('keydown', function(e) {
+
+    if (e.key === ' ' && graveSite.hasGameStarted === false) {
+        graveSite.hasGameStarted = true;
+        graveSite.startGame()
+        graveSite.isGamePaused = false;
+        splashScreen.style.display = 'none';
+
+
+    }
+})
+
+window.addEventListener('keydown', function(e) {
+
+        if (e.key === 'Escape' && graveSite.isGamePaused === false) {
+            graveSite.isGamePaused = true;
+            pauseScreen.style.display = 'flex';
+        } else if (e.key === 'Escape' && graveSite.isGamePaused === true) {
+            graveSite.isGamePaused = false;
+            pauseScreen.style.display = 'none';
+            keyScreen.style.display = 'none';
+            graveSite.update()
+        }
+    })
 
