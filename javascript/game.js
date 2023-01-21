@@ -1,13 +1,13 @@
 
-let player = new Player(50, 620, 50, 50, 'brown');
+let player = new Player(50, 610, 50, 50, 'brown');
 let key = new Key(1100, 650, 20, 40, 'img/key-blue.png')
 let door = new Template(1100, 50, 40, 80, 'green')
 let currentTime = 0;
-let check1 = new Template (400, 300, 10, 10, 'black')
-let check2 = new Template (400, 530, 10, 10, 'black')
-let check3 = new Template (800, 530, 10, 10, 'black')
-let check4 = new Template (800, 300, 10, 10, 'black')
+
 let ghoul = new Ghoul(400, 300, 50, 50, 'pink')
+let skeleton = new Skeleton(1100, 300, 50, 50, 'grey', {x: -5, y: 0})
+let skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
+let skeleton3 = new Skeleton(880, 520, 50, 50, 'grey', {x: 0, y: 5})
 
 
 
@@ -90,24 +90,37 @@ const graveSite = {
         }
         player.update();
         ghoul.update();
+        skeleton.update()
+        skeleton2.update()
+        skeleton3.update()
 
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMap()
         walls.forEach(wall => {
+
+            skeleton.runsAgainstWalls(wall)
+            skeleton2.runsAgainstWalls(wall)
+            skeleton3.runsAgainstWalls(wall)
+
             if (player.detectCollision(wall)) {
+
                 let previousY = player.y - player.velocity.y;
-                let previousX = player.x - player.velocity.x;
+                let previousX = player.x - player.velocity.x
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 player.x = previousX;
                 player.y = previousY;
 
             };
+
         })
 
         player.draw();
         ghoul.draw();
+        skeleton.draw()
+        skeleton2.draw()
+        skeleton3.draw()
         door.draw()
 
 
