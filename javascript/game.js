@@ -1,6 +1,6 @@
 
-let player = new Player(50, 650, 50, 50, 'brown');
-let key = new Template(1100, 650, 20, 40, 'blue')
+let player = new Player(50, 620, 50, 50, 'brown');
+let key = new Key(1100, 650, 20, 40, 'img/key-blue.png')
 let door = new Template(1100, 50, 40, 80, 'green')
 let currentTime = 0;
 
