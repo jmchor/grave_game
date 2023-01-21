@@ -1,6 +1,6 @@
 # Grave - can you escape?
 
-[Click here to see the deployed game](<https://jmchor.github.io/grave_game/>)
+[Click here to see the deployed game](https://jmchor.github.io/grave_game/)
 
 ## Description
 
@@ -13,8 +13,8 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 - ~player can pick up items (key, powerup)~
 - ~key unlocks door to escape~
 - power up makes player briefly invincible
-- ghosts/zombies/ghouls walk the tomb in either horizontal or vertical paths
-- ghosts kill player
+- ~ghosts/zombies/ghouls walk the tomb in either horizontal or vertical paths~
+- ~ghosts kill player~
 - time based high score (subtracting from a fixed highscore every second)
 -
 -
@@ -22,8 +22,8 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 ## Backlog
 
 - power ups: freeze time
-- pause/unpause
-- player inventory: display keys
+- ~pause/unpause~
+- ~player inventory: display keys~
 - only render visible circle around player (rest of map is black)
 - "Race against Time" - mode (Countdown) --> display timer
 - attack ghosts with weapon
