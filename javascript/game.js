@@ -22,6 +22,7 @@ let inventory = []
 const graveSite = {
 
     // The game's configuration
+    hasGameStarted: false,
     isGameOver: false,
     isGamePaused: false,
     isLeftKeyPressed: false,
@@ -30,9 +31,10 @@ const graveSite = {
     isDownKeyPressed: false,
     hasDoorKey: false,
 
+
     startGame: function() {
-        graveSite.isGameOver = false;
-        graveSite.isGamePaused = false;
+
+        graveSite.hasGameStarted = true;
 
         drawMap()
         player.draw();
@@ -41,11 +43,25 @@ const graveSite = {
 
         graveSite.displayTime()
 
-        if (keyPlace.includes(key)) {
-            key.draw()
-        }
+
+        graveSite.update()
+
 
     },
+
+    restartGame: function() {
+        currentTime = 0;
+        player.x = 50;
+        player.y = 610;
+        graveSite.isGameOver = false;
+        graveSite.isGamePaused = false;
+        graveSite.hasGameStarted = false;
+        graveSite.hasDoorKey = false;
+        keyPlace = [key]
+        inventory = []
+        key.y = 650
+        ctx.clearRect(0,0,canvas.width, canvas.height)
+        graveSite.startGame(); },
 
     getSeconds: function() {
        return Math.floor(currentTime % 60);
@@ -68,8 +84,13 @@ const graveSite = {
 
     update: function() {
 
-        encounterEnemy()
+        encounterEnemy(ghoul)
+        encounterEnemy(skeleton)
+        encounterEnemy(skeleton2)
+        encounterEnemy(skeleton3)
+
         walls = []
+        inventory = []
 
         if (graveSite.isGamePaused) return
 
@@ -129,7 +150,6 @@ const graveSite = {
        getKey()
 
        console.log("update")
-
        requestAnimationFrame(graveSite.update)
 
 
