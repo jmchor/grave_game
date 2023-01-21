@@ -22,8 +22,45 @@ body {
 
 
 #canvas {
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
     border: 1px solid black;
     background-image: url('../img/bright_floor.png');
     background-size: cover;
+}
+
+#splash-screen,#pause-screen, #key-screen, #game-over {
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 100px;
+    border-radius: 10px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+}
+
+#pause-screen, #key-screen, #game-over {
+    width: 500px;
+    height: 300px;
+    display: none;
+}
+
+#game-over {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
