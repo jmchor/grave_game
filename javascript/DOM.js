@@ -6,7 +6,6 @@ document.addEventListener('keydown', function(e) {
         switch (e.key) {
             case 'ArrowLeft':
 
-                console.log("left")
                 graveSite.isLeftKeyPressed = true;
                 player.moveLeft()
                 break;
