@@ -1,6 +1,6 @@
 # Grave - can you escape?
 
-<a href="https://jmchor.github.io/grave_game/" target="_blank"> Click here to see the deployed game </a>
+<a href="https://jmchor.github.io/grave_game/" target="_blank"> Click here to see the deployed Game </a>
 
 ## Description
 
