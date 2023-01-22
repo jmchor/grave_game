@@ -88,14 +88,9 @@ window.addEventListener('keydown', function(e) {
             return
         }
 
-
-
     }
 
 })
-
-
-
 
 
 window.addEventListener('keydown', function(e) {
@@ -105,8 +100,6 @@ window.addEventListener('keydown', function(e) {
         graveSite.startGame()
         graveSite.isGamePaused = false;
         splashScreen.style.display = 'none';
-
-
     }
 })
 
