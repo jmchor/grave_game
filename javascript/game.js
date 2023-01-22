@@ -3,13 +3,16 @@ let player = new Player(50, 610, 50, 50, 'brown');
 let key = new Key(275, 260 , 50, 50)
 let pickaxe = new Pickaxe(160, 40, 50, 50)
 let door = new Door(1070, 0, 60 , 80, 'green')
+let door2 = new Lever (1070, 650, 30 , 30, 'green')
 let currentTime = 0;
 let currentFrame = 0;
 let timer;
 let ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
+let ghoul2 = new Ghoul(300, 50, 50, 50, 'pink', {x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50})
 let skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
 let skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
 let skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
+
 
 
 
@@ -36,6 +39,7 @@ const graveSite = {
     hasPlayerWon: false,
     hasPlayerLost: false,
     hasPickaxe: false,
+    hasPulledLever: false,
 
 
     startGame: function() {
@@ -49,7 +53,9 @@ const graveSite = {
         drawMap()
         player.draw();
         ghoul.draw();
+        ghoul2.draw();
         door.draw()
+        door2.draw()
 
         graveSite.displayTime()
 
@@ -68,7 +74,11 @@ const graveSite = {
         graveSite.isGamePaused = false;
         graveSite.hasGameStarted = false;
         graveSite.hasDoorKey = false;
-        keyPlace = [key, pickaxe]
+        graveSite.hasPickaxe = false;
+        graveSite.hasPulledLever = false;
+
+        keyPlace = [key]
+        pickPlace = [pickaxe]
         inventory = []
         key.y = 260
         pickaxe.y = 40
@@ -97,18 +107,16 @@ const graveSite = {
 
     update: function() {
 
-        encounterEnemy(ghoul)
-        encounterEnemy(skeleton)
-        encounterEnemy(skeleton2)
-        encounterEnemy(skeleton3)
+        // encounterEnemy(ghoul)
+        // encounterEnemy(ghoul2)
+        // encounterEnemy(skeleton)
+        // encounterEnemy(skeleton2)
+        // encounterEnemy(skeleton3)
 
         walls = []
         inventory = []
 
         if (graveSite.isGamePaused) return
-
-
-
 
         if (graveSite.isLeftKeyPressed) {
             player.moveLeft();
@@ -123,9 +131,8 @@ const graveSite = {
             player.moveDown();
         }
         player.update();
-
-
         ghoul.update();
+        ghoul2.update();
         skeleton.update()
         skeleton2.update()
         skeleton3.update()
@@ -147,30 +154,25 @@ const graveSite = {
                 player.velocity.y = 0;
                 player.x = previousX;
                 player.y = previousY;
-
             }
-
-            else if (player.detectCollision(wall) && wall.color === "white" && graveSite.hasPickaxe && graveSite.hasDoorKey) {
-
-                    console.log("collision")
-
-        }})
+        })
 
         player.draw();
         ghoul.draw();
+        ghoul2.draw();
         skeleton.draw()
         skeleton2.draw()
         skeleton3.draw()
         door.draw()
+        door2.draw()
 
         player.inventory()
         graveSite.displayTime()
 
-       getKey()
-       getPickaxe()
+        getKey()
+        getPickaxe()
 
-       requestAnimationFrame(graveSite.update)
-
+        requestAnimationFrame(graveSite.update)
 
     }
 }
