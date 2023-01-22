@@ -75,7 +75,18 @@ class Player extends Template {
             };
         };
 
+        inventory () {
+
+            ctx.fillStyle = '#A66946'
+            ctx.fillRect(0, 725, canvas.width, 75 )
+            ctx.fillStyle = 'black';
+            ctx.font = '30px Arial';
+
+            ctx.fillText(`Inventory:`, 700, 770);
+
+
     }
+}
 
 
     function getKey (){
@@ -91,7 +102,7 @@ class Player extends Template {
             inventory.push(key)
         }
         if (inventory.includes(key)) {
-            let inventoryKey = new Key (1100, 750, 50, 50, 'blue')
+            let inventoryKey = new Key (850, 740, 50, 50, 'blue')
             inventoryKey.draw()
 
         }
