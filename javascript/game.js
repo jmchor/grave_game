@@ -1,14 +1,14 @@
 
 let player = new Player(50, 610, 50, 50, 'brown');
-let key = new Key(1100, 630, 50, 50)
+let key = new Key(275, 260 , 50, 50)
 let door = new Door(1070, 0, 60 , 80, 'green')
 let currentTime = 0;
 let currentFrame = 0;
 let timer;
 let ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
-let skeleton = new Skeleton(1100, 300, 50, 50, 'grey', {x: -5, y: 0})
+let skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
 let skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
-let skeleton3 = new Skeleton(880, 520, 50, 50, 'grey', {x: 0, y: 5})
+let skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
 
 
 
@@ -67,7 +67,7 @@ const graveSite = {
         graveSite.hasDoorKey = false;
         keyPlace = [key]
         inventory = []
-        key.y = 650
+        key.y = 260
         ctx.clearRect(0,0,canvas.width, canvas.height)
         graveSite.startGame(); },
 
@@ -82,11 +82,11 @@ const graveSite = {
     displayTime: function() {
         let seconds = graveSite.getSeconds();
         let minutes = graveSite.getMinutes();
+        ctx.fillStyle = '#8b7c59';
+        ctx.fillRect(1050, 725, 150,75);
         ctx.fillStyle = 'black';
-        ctx.fillRect(0, 750, 150, 50);
-        ctx.fillStyle = 'white';
         ctx.font = '20px Arial';
-        ctx.fillText(`Time: ${minutes}:${seconds}`, 10,780);
+        ctx.fillText(`Time: 0${minutes}:${seconds}`, 1065, 770);
     },
 
 
@@ -155,7 +155,7 @@ const graveSite = {
         skeleton3.draw()
         door.draw()
 
-
+        player.inventory()
         graveSite.displayTime()
 
        getKey()
