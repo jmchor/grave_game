@@ -107,6 +107,27 @@ class Player extends Template {
 
         }
 
+
+
+    }
+
+    function getPickaxe() {
+        if (player.detectCollision(pickaxe)) {
+            graveSite.hasPickaxe = true;
+        }
+        if (pickPlace.includes(pickaxe)) {
+            pickaxe.draw()
+        }
+        if(graveSite.hasPickaxe) {
+            pickaxe.y = -1000
+            pickPlace.pop()
+            inventory.push(pickaxe)
+        }
+        if (inventory.includes(pickaxe)) {
+            let inventoryPickaxe = new Pickaxe (950, 740, 50, 50, 'blue')
+            inventoryPickaxe.draw()
+
+        }
     }
 
     function openDoor() {
