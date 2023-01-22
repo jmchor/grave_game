@@ -23,7 +23,17 @@ class Key extends Template {
         super(x, y, w, h, img)
 
         this.img = new Image();
-        this.img.src = 'img/key-blue.png'
+        this.img.src = 'img/key.png'
+
+    }
+}
+
+class Door extends Template {
+    constructor (x, y, w, h, img) {
+        super(x, y, w, h, img)
+
+        this.img = new Image();
+        this.img.src = 'img/door.png'
 
     }
 }

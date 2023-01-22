@@ -7,6 +7,7 @@ class Template {
         this.h = h
         if (color) this.color = color
         if (img) this.img = img
+        this.currentFrame = 0
     }
 
     draw () {
@@ -23,6 +24,9 @@ class Template {
     clear() {
         ctx.clearRect(this.x, this.y, this.w, this.h)
     }
+
+
+
 
 
 

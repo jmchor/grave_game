@@ -1,12 +1,20 @@
 class Player extends Template {
 
-    constructor(x,y,w,h,img) {
+    constructor(x,y,w,h, source, img) {
         super(x,y,w,h,img);
         this.velocity = {x: 0, y: 0}
         this.img = new Image();
-        this.img.src = 'img/manUp.png'
+        this.img.src = 'img/main_sprite.png'
+        this.source = {x: 0, y: 96, w: 96, h: 32}
+        this.currentFrame = 0
 
 
+
+
+    }
+
+    draw() {
+        ctx.drawImage(this.img, this.source.x * this.currentFrame / this.source.w , this.source.y, this.source.w, this.source.h, this.x, this.y, this.w, this.h)
 
     }
 
@@ -18,26 +26,22 @@ class Player extends Template {
 
     moveUp() {
         this.velocity.y = -5;
-        this.img = new Image();
-        this.img.src = 'img/manUp.png'
+        this.source = {x: 0, y: 96, w: 96, h: 32}
     }
     moveDown() {
         this.velocity.y = 5;
-        this.img = new Image();
-        this.img.src = 'img/manDown.png'
+        this.source = {x: 0, y: 0, w: 96, h: 32}
 
 
     }
     moveLeft() {
        this.velocity.x = -5;
-       this.img = new Image();
-        this.img.src = 'img/manLeft.png'
+       this.source = {x: 0, y: 32, w: 96, h: 32}
 
     }
     moveRight() {
         this.velocity.x = 5;
-        this.img = new Image();
-        this.img.src = 'img/manRight.png'
+        this.source = {x: 0, y: 64, w: 96, h: 32}
 
     }
 

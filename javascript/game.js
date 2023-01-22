@@ -1,8 +1,9 @@
 
 let player = new Player(50, 610, 50, 50, 'brown');
-let key = new Key(1100, 650, 20, 40, 'img/key-blue.png')
-let door = new Template(1100, 50, 40, 80, 'green')
+let key = new Key(1100, 630, 50, 50)
+let door = new Door(1070, 0, 60 , 80, 'green')
 let currentTime = 0;
+let currentFrame = 0;
 let timer;
 let ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
 let skeleton = new Skeleton(1100, 300, 50, 50, 'grey', {x: -5, y: 0})
@@ -87,6 +88,7 @@ const graveSite = {
         ctx.font = '20px Arial';
         ctx.fillText(`Time: ${minutes}:${seconds}`, 10,780);
     },
+
 
 
     update: function() {
