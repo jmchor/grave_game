@@ -1,6 +1,7 @@
 
 let player = new Player(50, 610, 50, 50, 'brown');
 let key = new Key(275, 260 , 50, 50)
+let pickaxe = new Pickaxe(160, 40, 50, 50)
 let door = new Door(1070, 0, 60 , 80, 'green')
 let currentTime = 0;
 let currentFrame = 0;
@@ -18,6 +19,7 @@ walls.forEach(wall => {
 })
 
 let keyPlace = [key]
+let pickPlace = [pickaxe]
 let inventory = []
 
 const graveSite = {
@@ -33,6 +35,7 @@ const graveSite = {
     hasDoorKey: false,
     hasPlayerWon: false,
     hasPlayerLost: false,
+    hasPickaxe: false,
 
 
     startGame: function() {
@@ -65,9 +68,10 @@ const graveSite = {
         graveSite.isGamePaused = false;
         graveSite.hasGameStarted = false;
         graveSite.hasDoorKey = false;
-        keyPlace = [key]
+        keyPlace = [key, pickaxe]
         inventory = []
         key.y = 260
+        pickaxe.y = 40
         ctx.clearRect(0,0,canvas.width, canvas.height)
         graveSite.startGame(); },
 
@@ -144,9 +148,13 @@ const graveSite = {
                 player.x = previousX;
                 player.y = previousY;
 
-            };
+            }
 
-        })
+            else if (player.detectCollision(wall) && wall.color === "white" && graveSite.hasPickaxe && graveSite.hasDoorKey) {
+
+                    console.log("collision")
+
+        }})
 
         player.draw();
         ghoul.draw();
@@ -159,6 +167,7 @@ const graveSite = {
         graveSite.displayTime()
 
        getKey()
+       getPickaxe()
 
        requestAnimationFrame(graveSite.update)
 
