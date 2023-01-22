@@ -119,7 +119,7 @@ const graveSite = {
             player.moveDown();
         }
         player.update();
-        player.animate()
+
 
         ghoul.update();
         skeleton.update()
