@@ -8,23 +8,16 @@ class Player extends Template {
         this.source = {x: 0, y: 96, w: 96, h: 32}
         this.currentFrame = 0
         this.frameCount = 0
-
-
-
-
     }
 
     draw() {
         ctx.drawImage(this.img, this.source.w * this.currentFrame / 3 , this.source.y, this.source.w / 3, this.source.h, this.x, this.y, this.w, this.h)
-
-
     }
 
     animate () {
         this.frameCount++
         if (this.frameCount % 7 === 0 && this.velocity.x !== 0 || this.frameCount % 5 === 0 && this.velocity.y !== 0) this.currentFrame++
         if (this.currentFrame > 2) this.currentFrame = 0
-
     }
 
     update() {
@@ -149,6 +142,15 @@ class Player extends Template {
 
         }
     }
+
+    function useLever() {
+        if (player.detectCollision(lever)) {
+            graveSite.hasLeverPulled = true;
+
+
+        }
+    }
+
 
     function encounterEnemy(enemy) {
 
