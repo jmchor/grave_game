@@ -1,6 +1,6 @@
 class Player extends Template {
 
-    constructor(x,y,w,h, source, img) {
+    constructor(x,y,w,h, img) {
         super(x,y,w,h,img);
         this.velocity = {x: 0, y: 0}
         this.img = new Image();
@@ -8,7 +8,6 @@ class Player extends Template {
         this.source = {x: 0, y: 96, w: 96, h: 32}
         this.currentFrame = 0
         this.frameCount = 0
-        this.source.x
 
 
 
@@ -23,13 +22,14 @@ class Player extends Template {
 
     animate () {
         this.frameCount++
-        if (this.frameCount % 5 === 0 && this.velocity.x !== 0 || this.frameCount % 5 === 0 && this.velocity.y !== 0) this.currentFrame++
+        if (this.frameCount % 7 === 0 && this.velocity.x !== 0 || this.frameCount % 5 === 0 && this.velocity.y !== 0) this.currentFrame++
         if (this.currentFrame > 2) this.currentFrame = 0
 
     }
 
     update() {
         this.draw()
+        this.animate()
         this.x += this.velocity.x;
         this.y += this.velocity.y;
     }
