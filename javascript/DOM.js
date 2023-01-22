@@ -74,6 +74,7 @@ window.addEventListener('keydown', function(e) {
         if (graveSite.hasDoorKey && graveSite.isGamePaused === false) {
             openDoor()
         }
+
         else if (!graveSite.hasDoorKey && graveSite.hasPlayerWon === false && graveSite.hasPlayerLost === false && graveSite.hasGameStarted && player.detectCollision(door)) {
             keyScreen.style.display = 'flex'
         }
@@ -101,20 +102,25 @@ window.addEventListener('keydown', function(e) {
         graveSite.isGamePaused = false;
         splashScreen.style.display = 'none';
     }
+
+    if (e.key === 'e' && graveSite.hasPulledLever === false) {
+        graveSite.hasPulledLever = true;
+    }
+
+    if (e.key === 'Escape' && graveSite.isGamePaused === false && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
+        graveSite.isGamePaused = true;
+        pauseScreen.style.display = 'flex';
+    } else if (e.key === 'Escape' && graveSite.isGamePaused === true && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
+        graveSite.isGamePaused = false;
+        pauseScreen.style.display = 'none';
+        keyScreen.style.display = 'none';
+        graveSite.update()
+    } else if (e.key === 'Escape' && graveSite.isGameOver === true || graveSite.hasGameStarted === false) {
+        return  }
+
+
+
 })
 
-window.addEventListener('keydown', function(e) {
 
-        if (e.key === 'Escape' && graveSite.isGamePaused === false && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
-            graveSite.isGamePaused = true;
-            pauseScreen.style.display = 'flex';
-        } else if (e.key === 'Escape' && graveSite.isGamePaused === true && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
-            graveSite.isGamePaused = false;
-            pauseScreen.style.display = 'none';
-            keyScreen.style.display = 'none';
-            graveSite.update()
-        } else if (e.key === 'Escape' && graveSite.isGameOver === true || graveSite.hasGameStarted === false) {
-            return  }
-
-    })
 
