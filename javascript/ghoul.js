@@ -1,32 +1,33 @@
 class Ghoul extends Template {
-    constructor(x,y,w,h,color) {
+    constructor(x,y,w,h,color,path) {
         super(x,y,w,h,color);
         this.velocity = {x: 0, y: 0}
         // this.img = new Image();
         // this.img.src = 'img/ghoul.png'
+        this.path = path
 
     }
     update() {
         this.draw()
-        if (this.x === 400 && this.y >= 300) {
+        if ( this.x === this.path.x1 && this.y >= this.path.y1) {
             this.velocity.x = 0;
             this.velocity.y = 5;
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
         }
-        if (this.x >= 400 && this.y === 520) {
+        if ( this.x  >= this.path.x2 && this.path.y2 === this.y) {
             this.velocity.y = 0;
             this.velocity.x = 5;
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
         }
-        if (this.x === 800 && this.y <= 530) {
+        if (this.path.x3 === this.x && this.y <=  this.path.y3) {
             this.velocity.x = 0;
             this.velocity.y = -5;
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
         }
-        if (this.x <= 800 && this.y === 300) {
+        if (this.x <= this.path.x4  && this.path.y4 === this.y) {
             this.velocity.x = -5;
             this.velocity.y = 0;
             this.x = this.x + this.velocity.x;
