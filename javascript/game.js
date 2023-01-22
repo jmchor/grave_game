@@ -119,6 +119,8 @@ const graveSite = {
             player.moveDown();
         }
         player.update();
+        player.animate()
+
         ghoul.update();
         skeleton.update()
         skeleton2.update()
@@ -158,7 +160,6 @@ const graveSite = {
 
        getKey()
 
-       console.log("update")
        requestAnimationFrame(graveSite.update)
 
 
