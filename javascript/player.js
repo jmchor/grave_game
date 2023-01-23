@@ -101,6 +101,22 @@ class Player extends Template {
             inventoryKey.draw()
 
         }
+        if (graveSite.hasDoorKey && !graveSite.hasPickaxe)
+        {
+
+            setTimeout(() => {
+                graveSite.isGameOver = true;
+                graveSite.isGamePaused = true;
+                graveSite.isTrapped = true;
+                ctx.clearRect(0,0,canvas.width, canvas.height)
+                ctx.fillStyle = 'black'
+                ctx.fillRect(0,0,canvas.width, canvas.height,)
+                trapScreen.style.display = 'flex'
+
+            }, 1000 + 500);
+
+
+        }
 
 
 
