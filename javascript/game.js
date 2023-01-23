@@ -2,6 +2,7 @@
 let player
 let key
 let pickaxe
+let cantTouchThis
 let door
 let door2
 let currentTime
@@ -28,6 +29,8 @@ const graveSite = {
     isRightKeyPressed: false,
     isUpKeyPressed: false,
     isDownKeyPressed: false,
+    wallsAreSolid: true,
+    isIntangible: false,
     hasDoorKey: false,
     hasPlayerWon: false,
     hasPlayerLost: false,
@@ -55,6 +58,7 @@ const graveSite = {
         ghoul2.draw();
         door.draw()
         door2.draw()
+        cantTouchThis.draw()
 
         graveSite.displayTime()
 
@@ -130,6 +134,7 @@ const graveSite = {
         encounterEnemy(skeleton3)
 
         walls = []
+        floors = []
         inventory = []
 
         if (graveSite.isGamePaused) return
@@ -161,36 +166,59 @@ const graveSite = {
 
 
         walls.forEach(wall => {
+            let previousY
+            let previousX
 
             skeleton.runsAgainstWalls(wall)
             skeleton2.runsAgainstWalls(wall)
             skeleton3.runsAgainstWalls(wall)
 
-            if (player.detectCollision(wall)) {
+            if (player.detectCollision(wall) && graveSite.wallsAreSolid) {
 
-                let previousY = player.y - player.velocity.y;
-                let previousX = player.x - player.velocity.x
+                previousY = player.y - player.velocity.y;
+                previousX = player.x - player.velocity.x
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 player.x = previousX;
                 player.y = previousY;
             }
+
         })
 
+        floors.forEach(floor => {
+            let previousY
+            let previousX
+
+            if (player.detectCollision(floor)) {
+
+                previousY = player.y - player.velocity.y / 1.5;
+                previousX = player.x - player.velocity.x / 1.5
+                player.velocity.x = 0;
+                player.velocity.y = 0;
+                player.x = previousX;
+                player.y = previousY;
+            }
+
+        })
+
+
+        door.draw()
+        door2.draw()
         player.draw();
         ghoul.draw();
         ghoul2.draw();
         skeleton.draw()
         skeleton2.draw()
         skeleton3.draw()
-        door.draw()
-        door2.draw()
+        cantTouchThis.draw()
+
 
         player.inventory()
         graveSite.displayTime()
 
         getKey()
         getPickaxe()
+        getPowerUp(cantTouchThis)
 
         requestAnimationFrame(graveSite.update)
 
@@ -203,6 +231,7 @@ if (graveSite.isLevelOne)
 {player = new Player(50, 610, 50, 50, 'brown');
 key = new Key(275, 260 , 50, 50)
 pickaxe = new Pickaxe(160, 40, 50, 50)
+cantTouchThis = new Item(745, 625, 40, 40)
 door = new Door(1070, 0, 60 , 80, 'green')
 door2 = new Lever (1070, 650, 30 , 30, 'green')
 currentTime = 0;
