@@ -84,8 +84,7 @@ class Player extends Template {
 
         inventory () {
 
-            let inventoryImg = new Image();
-            inventoryImg.src = 'img/inventory.png'
+
             ctx.drawImage(inventoryImg, 0, 715, 990, 85)
             ctx.drawImage(inventoryImg, 990, 715, 210, 85)
 

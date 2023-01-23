@@ -8,6 +8,8 @@ const winScore = document.getElementById('win-score')
 const loseScore = document.getElementById('lose-score')
 const loseScreen = document.getElementById('lose-screen')
 const trapScreen = document.getElementById('trap-screen')
+let inventoryImg = new Image();
+inventoryImg.src = 'img/inventory.png'
 
 
 

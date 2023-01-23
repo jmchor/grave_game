@@ -136,6 +136,8 @@ const graveSite = {
 
     update: function() {
 
+
+
         encounterEnemy(ghoul)
         encounterEnemy(ghoul2)
         encounterEnemy(skeleton)
@@ -176,7 +178,7 @@ const graveSite = {
 
 
         drawMap()
-
+        player.inventory()
 
         walls.forEach(wall => {
             let previousY
@@ -232,7 +234,7 @@ const graveSite = {
         cantTouchThis.draw()
         }
 
-        player.inventory()
+
         graveSite.displayTime()
 
         getKey()
