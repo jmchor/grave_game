@@ -54,7 +54,9 @@ class Player extends Template {
             this.y + this.h + this.velocity.y  - 15>= target.y &&
             this.x + this.velocity.x + 15  <= target.x + target.w)
             {
+
                 return true
+
             };
         };
 
@@ -156,8 +158,6 @@ class Player extends Template {
             winScreen.style.display = 'flex'
             winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`
 
-
-
         }
     }
 
@@ -168,10 +168,9 @@ class Player extends Template {
         }
     }
 
-
     function encounterEnemy(enemy) {
 
-        if (player.detectCollision(enemy)) {
+        if (player.detectCollision(enemy) && graveSite.isIntangible === false) {
             console.log("You've been caught!")
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
@@ -182,7 +181,24 @@ class Player extends Template {
             loseScreen.style.display = 'flex'
             loseScore.innerHTML = `The ghouls got to you after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`
 
-
-
         }
     }
+
+    function intangibility() {
+            graveSite.isIntangible = true
+
+            setTimeout(() => {
+                graveSite.isIntangible = false
+                console.log(graveSite.isIntangible)
+            }, 4000);
+
+    }
+    function getPowerUp(item) {
+
+        if (player.detectCollision(item) && item === cantTouchThis) {
+            item.y = -1000
+            intangibility()
+
+        }
+
+}
