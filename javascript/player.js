@@ -165,7 +165,6 @@ class Player extends Template {
         if (player.detectCollision(lever)) {
             graveSite.hasLeverPulled = true;
 
-
         }
     }
 

@@ -50,9 +50,12 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ## States & States Transitions
 
-- splashScreen (Backstory, Controls, StartGame)
-- GameScreen
-- GameOverScreen
+- ~splashScreen (Backstory, Controls, StartGame)~
+- ~GameScreen~
+- ~GameOverScreen~
+- ~pauseGame~
+- ~forgotKey~
+- ~Trapped!~
 
 ## Task
 
@@ -62,7 +65,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 - ~player - create player & keyEvents (controls & pickup)~
 - ~player - create pickup functionality~
 - ~item - create key~
-- item - create door
+- ~item - create door~
 - ~ghoul -create nameless ghoul~
 -
 

@@ -1,29 +1,22 @@
 
-let player = new Player(50, 610, 50, 50, 'brown');
-let key = new Key(275, 260 , 50, 50)
-let pickaxe = new Pickaxe(160, 40, 50, 50)
-let door = new Door(1070, 0, 60 , 80, 'green')
-let door2 = new Lever (1070, 650, 30 , 30, 'green')
-let currentTime = 0;
-let currentFrame = 0;
-let timer;
-let ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
-let ghoul2 = new Ghoul(300, 50, 50, 50, 'pink', {x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50})
-let skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
-let skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
-let skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
+let player
+let key
+let pickaxe
+let door
+let door2
+let currentTime
+let currentFrame
+let timer
+let ghoul
+let ghoul2
+let skeleton
+let skeleton2
+let skeleton3
+let keyPlace
+let pickPlace
+let inventory
 
 
-
-
-walls.forEach(wall => {
-    wall.draw();
-
-})
-
-let keyPlace = [key]
-let pickPlace = [pickaxe]
-let inventory = []
 
 const graveSite = {
 
@@ -41,6 +34,8 @@ const graveSite = {
     hasPickaxe: false,
     hasPulledLever: false,
     isTrapped: false,
+    isLevelOne: true,
+    isLevelTwo: false,
 
 
     startGame: function() {
@@ -51,7 +46,10 @@ const graveSite = {
 
         graveSite.hasGameStarted = true;
 
-        drawMap()
+
+            drawMap()
+
+
         player.draw();
         ghoul.draw();
         ghoul2.draw();
@@ -59,7 +57,6 @@ const graveSite = {
         door2.draw()
 
         graveSite.displayTime()
-
 
         graveSite.update()
 
@@ -69,8 +66,6 @@ const graveSite = {
     restartGame: function() {
         currentTime = 0;
         clearInterval(timer);
-        player.x = 50;
-        player.y = 610;
         graveSite.isGameOver = false;
         graveSite.isGamePaused = false;
         graveSite.hasGameStarted = false;
@@ -78,12 +73,22 @@ const graveSite = {
         graveSite.hasPickaxe = false;
         graveSite.hasPulledLever = false;
         graveSite.isTrapped = false;
-
         keyPlace = [key]
         pickPlace = [pickaxe]
         inventory = []
+
+        if (graveSite.isLevelOne) {
+            player.x = 50;
+        player.y = 610;
         key.y = 260
         pickaxe.y = 40
+
+        } else if (graveSite.isLevelTwo) {
+            player.x = 50;
+        player.y = 150;
+        key.y = 260
+        pickaxe.y = 40 }
+
         ctx.clearRect(0,0,canvas.width, canvas.height)
 
         graveSite.startGame(); },
@@ -150,7 +155,11 @@ const graveSite = {
 
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
         drawMap()
+
+
         walls.forEach(wall => {
 
             skeleton.runsAgainstWalls(wall)
@@ -189,4 +198,44 @@ const graveSite = {
 }
 
 
-    // The game's objects
+if (graveSite.isLevelOne)
+
+{player = new Player(50, 610, 50, 50, 'brown');
+key = new Key(275, 260 , 50, 50)
+pickaxe = new Pickaxe(160, 40, 50, 50)
+door = new Door(1070, 0, 60 , 80, 'green')
+door2 = new Lever (1070, 650, 30 , 30, 'green')
+currentTime = 0;
+currentFrame = 0;
+timer;
+ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
+ghoul2 = new Ghoul(300, 50, 50, 50, 'pink', {x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50})
+skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
+skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
+skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
+keyPlace = [key]
+pickPlace = [pickaxe]
+inventory = []
+}
+
+if (graveSite.isLevelTwo){
+    player = new Player(50, 150, 50, 50, 'brown');
+key = new Key(275, 260 , 50, 50)
+pickaxe = new Pickaxe(160, 40, 50, 50)
+door = new Door(1070, 0, 60 , 80, 'green')
+door2 = new Lever (1070, 650, 30 , 30, 'green')
+currentTime = 0;
+currentFrame = 0;
+timer;
+ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
+ghoul2 = new Ghoul(300, 50, 50, 50, 'pink', {x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50})
+skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
+skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
+skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
+keyPlace = [key]
+pickPlace = [pickaxe]
+inventory = []
+
+
+}
+
