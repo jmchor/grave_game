@@ -40,6 +40,7 @@ const graveSite = {
     hasPlayerLost: false,
     hasPickaxe: false,
     hasPulledLever: false,
+    isTrapped: false,
 
 
     startGame: function() {
@@ -76,6 +77,7 @@ const graveSite = {
         graveSite.hasDoorKey = false;
         graveSite.hasPickaxe = false;
         graveSite.hasPulledLever = false;
+        graveSite.isTrapped = false;
 
         keyPlace = [key]
         pickPlace = [pickaxe]
@@ -83,6 +85,7 @@ const graveSite = {
         key.y = 260
         pickaxe.y = 40
         ctx.clearRect(0,0,canvas.width, canvas.height)
+
         graveSite.startGame(); },
 
     getSeconds: function() {
@@ -115,11 +118,11 @@ const graveSite = {
 
     update: function() {
 
-        // encounterEnemy(ghoul)
-        // encounterEnemy(ghoul2)
-        // encounterEnemy(skeleton)
-        // encounterEnemy(skeleton2)
-        // encounterEnemy(skeleton3)
+        encounterEnemy(ghoul)
+        encounterEnemy(ghoul2)
+        encounterEnemy(skeleton)
+        encounterEnemy(skeleton2)
+        encounterEnemy(skeleton3)
 
         walls = []
         inventory = []
