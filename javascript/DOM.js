@@ -7,6 +7,7 @@ const winScreen = document.getElementById('win-screen')
 const winScore = document.getElementById('win-score')
 const loseScore = document.getElementById('lose-score')
 const loseScreen = document.getElementById('lose-screen')
+const trapScreen = document.getElementById('trap-screen')
 
 
 
@@ -71,21 +72,26 @@ window.addEventListener('keydown', function(e) {
 
     if (e.key === 'Enter') {
 
-        if (graveSite.hasDoorKey && graveSite.isGamePaused === false) {
+        if (graveSite.hasDoorKey && graveSite.isGamePaused === false && graveSite.isTrapped === false) {
             openDoor()
         }
 
         else if (!graveSite.hasDoorKey && graveSite.hasPlayerWon === false && graveSite.hasPlayerLost === false && graveSite.hasGameStarted && player.detectCollision(door)) {
             keyScreen.style.display = 'flex'
         }
-        else if (graveSite.isGameOver && graveSite.hasPlayerWon) {
+        else if (graveSite.isGameOver && graveSite.hasPlayerWon ) {
             winScreen.style.display = 'none'
             graveSite.restartGame()
         }
         else if (graveSite.isGameOver && graveSite.hasPlayerLost) {
             loseScreen.style.display = 'none'
             graveSite.restartGame()
-        } else if (graveSite.hasGameStarted === false && graveSite.isGameOver === false && graveSite.isGamePaused === false) {
+        }
+        else if (graveSite.isTrapped) {
+            trapScreen.style.display = 'none'
+            graveSite.restartGame()
+
+        } else if (graveSite.hasGameStarted === false && graveSite.isGameOver === false && graveSite.isGamePaused === false && graveSite.isTrapped === false) {
             return
         }
 
