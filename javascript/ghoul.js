@@ -132,6 +132,52 @@ class Skeleton extends Ghoul {
         }}
     }
 
+    class Monk extends Skeleton {
+
+        constructor(x,y,w,h,img, velocity) {
+            super(x,y,w,h,img);
+            this.velocity = velocity
+            // this.img = new Image();
+            // this.img.src = 'img/ghoul.png'
+
+            this.img = new Image();
+            this.img.src = 'img/monk.png'
+            this.source = {x: 0, y: 96, w: 96, h: 32}
+            this.currentFrame = 0
+            this.frameCount = 0
+
+        }
+
+        runsAgainstWalls(wall) {
+
+            if (this.detectCollision(wall) && this.velocity.x === -3) {
+                this.velocity.x = 3;
+                this.velocity.y = 0;
+                this.source = {y: 64, w: 96, h: 32}
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+            } else if (this.detectCollision(wall) && this.velocity.x === 3) {
+                this.velocity.x = -3;
+                this.velocity.y = 0;
+                this.source = { y: 32, w: 96, h: 32}
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+            } else if (this.detectCollision(wall) && this.velocity.y === -3) {
+                this.velocity.x = 0;
+                this.velocity.y = 3
+                this.source = { y: 0, w: 96, h: 32}
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+            } else if (this.detectCollision(wall) && this.velocity.y === 3) {
+                this.velocity.x = 0;
+                this.velocity.y = -3;
+                this.source = {y: 96, w: 96, h: 32}
+                this.x = this.x + this.velocity.x;
+                this.y = this.y + this.velocity.y;
+            }}
+
+    }
+
 
 
 

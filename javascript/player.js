@@ -8,6 +8,7 @@ class Player extends Template {
         this.source = {x: 0, y: 96, w: 96, h: 32}
         this.currentFrame = 0
         this.frameCount = 0
+        this.stepCount = 0
     }
 
     draw() {
@@ -17,6 +18,12 @@ class Player extends Template {
     animate () {
         this.frameCount++
         if (this.frameCount % 7 === 0 && this.velocity.x !== 0 || this.frameCount % 5 === 0 && this.velocity.y !== 0) this.currentFrame++
+
+        this.stepCount++
+        if (this.stepCount % 3 === 0 && this.velocity.x !== 0 || this.stepCount % 10 === 0 && this.velocity.y !== 0) {
+            mySound.play()
+        }
+
         if (this.currentFrame > 2) this.currentFrame = 0
     }
 
@@ -30,6 +37,8 @@ class Player extends Template {
     moveUp() {
         this.velocity.y = -5;
         this.source = {y: 96, w: 96, h: 32}
+
+
     }
     moveDown() {
         this.velocity.y = 5;
@@ -47,6 +56,9 @@ class Player extends Template {
         this.source = {y: 64, w: 96, h: 32}
 
     }
+
+
+
 
     detectCollision(target) {
         if (this.y + this.velocity.y  + 15 <= target.y + target.h  &&
@@ -156,7 +168,8 @@ class Player extends Template {
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)
             winScreen.style.display = 'flex'
-            winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`
+            winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score}`
+
 
         }
     }
@@ -179,7 +192,8 @@ class Player extends Template {
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)
             loseScreen.style.display = 'flex'
-            loseScore.innerHTML = `The ghouls got to you after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds`
+            loseScore.innerHTML = `The ghouls got to you after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score}`
+
 
         }
     }

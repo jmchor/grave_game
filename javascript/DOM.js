@@ -19,6 +19,7 @@ document.addEventListener('keydown', function(e) {
 
                 graveSite.isLeftKeyPressed = true;
                 player.moveLeft()
+
                 break;
             case 'ArrowRight':
                 graveSite.isRightKeyPressed = true;
@@ -42,22 +43,26 @@ document.addEventListener('keydown', function(e) {
         switch (e.key) {
             case 'ArrowLeft':
                 graveSite.isLeftKeyPressed = false;
+                mySound.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
 
                 break;
             case 'ArrowRight':
                 graveSite.isRightKeyPressed = false;
+                mySound.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
             case 'ArrowUp':
                 graveSite.isUpKeyPressed = false;
+                mySound.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
             case 'ArrowDown':
                 graveSite.isDownKeyPressed = false;
+                mySound.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
