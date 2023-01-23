@@ -32,7 +32,8 @@ body {
 #pause-screen,
 #key-screen,
 #win-screen,
-#lose-screen {
+#lose-screen,
+#trap-screen  {
 	width: 1200px;
 	height: 800px;
 	font-family: 'Work Sans';
@@ -69,12 +70,13 @@ body {
 }
 
 #win-screen,
-#lose-screen {
+#lose-screen,
+#trap-screen {
 	display: none;
 }
 
 #win-screen {
-	background-color: rgba(245, 245, 10, 0.9);
+	background-color: rgba(245, 10, 10, 0.9);
 	color: black;
 	font-size: 50px;
 	font-family: 'Work Sans';
