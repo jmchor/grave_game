@@ -33,8 +33,9 @@ body {
 #key-screen,
 #win-screen,
 #lose-screen {
-	width: 1000px;
-	height: 600px;
+	width: 1200px;
+	height: 800px;
+	font-family: 'Work Sans';
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -49,7 +50,15 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 50px;
+	gap: 30px;
+}
+
+#splash-screen{
+	background-image: url('../img/graves.png');
+	background-size: cover;
+	border-radius: 0px;
+	font-weight: 700;
+
 }
 
 #pause-screen,

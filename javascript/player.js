@@ -70,12 +70,14 @@ class Player extends Template {
 
         inventory () {
 
-            ctx.fillStyle = '#A66946'
-            ctx.fillRect(0, 725, canvas.width, 75 )
-            ctx.fillStyle = 'black';
-            ctx.font = '30px Arial';
+            let inventoryImg = new Image();
+            inventoryImg.src = 'img/inventory.png'
+            ctx.drawImage(inventoryImg, 0, 715, 990, 85)
+            ctx.drawImage(inventoryImg, 990, 715, 210, 85)
 
-            ctx.fillText(`Inventory:`, 700, 770);
+            // ctx.fillStyle = '#A66946'
+            // ctx.fillRect(0, 725, canvas.width, 75 )
+
 
 
     }
@@ -95,7 +97,7 @@ class Player extends Template {
             inventory.push(key)
         }
         if (inventory.includes(key)) {
-            let inventoryKey = new Key (850, 740, 50, 50, 'blue')
+            let inventoryKey = new Key (55, 735, 50, 50, 'blue')
             inventoryKey.draw()
 
         }
@@ -117,7 +119,7 @@ class Player extends Template {
             inventory.push(pickaxe)
         }
         if (inventory.includes(pickaxe)) {
-            let inventoryPickaxe = new Pickaxe (950, 740, 50, 50, 'blue')
+            let inventoryPickaxe = new Pickaxe (110, 735, 50, 50, 'blue')
             inventoryPickaxe.draw()
 
         }

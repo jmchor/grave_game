@@ -93,14 +93,22 @@ const graveSite = {
         return Math.floor(currentTime / 60);
     },
 
+    computeTwoDigitNumber: function (value) {
+		if (value < 10) {
+			return '0' + value;
+		} else {
+			return value.toString();
+		}
+	},
+
     displayTime: function() {
-        let seconds = graveSite.getSeconds();
-        let minutes = graveSite.getMinutes();
-        ctx.fillStyle = '#8b7c59';
-        ctx.fillRect(1050, 725, 150,75);
+        let seconds = graveSite.computeTwoDigitNumber(graveSite.getSeconds());
+        let minutes = graveSite.computeTwoDigitNumber(graveSite.getMinutes());
+        // ctx.fillStyle = '#8b7c59';
+        // ctx.fillRect(1050, 725, 150,75);
         ctx.fillStyle = 'black';
-        ctx.font = '20px Arial';
-        ctx.fillText(`Time: 0${minutes}:${seconds}`, 1065, 770);
+        ctx.font = '40px "Work Sans"';
+        ctx.fillText(`${minutes}:${seconds}`, 1045, 770);
     },
 
 

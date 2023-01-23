@@ -13,7 +13,7 @@ class PenetrableWall extends Wall {
         super(x, y, w, h, img)
 
         this.img = new Image();
-        this.img.src = 'img/wall_bright.png'
+        this.img.src = 'img/Wood_12.png'
 
     }
 }
@@ -43,7 +43,7 @@ class Pickaxe extends Key {
         super(x, y, w, h, img)
 
         this.img = new Image();
-        this.img.src = 'img/pickaxe.png'
+        this.img.src = 'img/pickaxe2.png'
 
     }
 }
@@ -53,7 +53,7 @@ class Lever extends Key {
         super(x, y, w, h, img)
 
         this.img = new Image();
-        this.img.src = 'img/floor.png'
+        this.img.src = 'img/Tile_21.png'
 
     }
 }
