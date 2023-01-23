@@ -85,11 +85,16 @@ class Player extends Template {
         inventory () {
 
 
-            ctx.drawImage(inventoryImg, 0, 715, 990, 85)
-            ctx.drawImage(inventoryImg, 990, 715, 210, 85)
+            // ctx.drawImage(inventoryImg, 0, 715, 990, 85)
+            // ctx.drawImage(inventoryImg, 990, 715, 210, 85)
 
-            // ctx.fillStyle = '#A66946'
-            // ctx.fillRect(0, 725, canvas.width, 75 )
+            ctx.fillStyle = '#f0ddb8'
+            ctx.fillRect(0, 715, 1200, 85)
+
+             ctx.strokeStyle = "#816852"
+                ctx.lineWidth = 5
+                ctx.strokeRect(3, 715, 985, 83)
+                ctx.strokeRect(990, 715, 208, 83)
 
 
 
