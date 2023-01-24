@@ -15,15 +15,17 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 - power up makes player briefly invincible
 - ~ghosts/zombies/ghouls walk the tomb in either horizontal or vertical paths~
 - ~ghosts kill player~
-- time based high score (subtracting from a fixed highscore every second)
+- ~time based high score (subtracting from a fixed highscore every second)~
 -
 -
 
 ## Backlog
 
-- power ups: freeze time
+- ~power ups: intangibility from monsters~
+- ~powerups appear after random time~
 - ~pause/unpause~
 - ~player inventory: display keys~
+- ~step and background noise~
 - only render visible circle around player (rest of map is black)
 - "Race against Time" - mode (Countdown) --> display timer
 - attack ghosts with weapon
