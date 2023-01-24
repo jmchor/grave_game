@@ -56,15 +56,7 @@ class Ghoul extends Template {
             this.y = this.y + this.velocity.y;
         }
     }
-    detectCollision(target) {
-        if (this.y + this.velocity.y  + 15 <= target.y + target.h  &&
-            this.x + this.w + this.velocity.x -15 >= target.x &&
-            this.y + this.h + this.velocity.y  - 15>= target.y &&
-            this.x + this.velocity.x + 15  <= target.x + target.w)
-            {
-                return true
-            };
-        };
+
 }
 
 class Skeleton extends Ghoul {
@@ -105,27 +97,27 @@ class Skeleton extends Ghoul {
 
       runsAgainstWalls(wall) {
 
-        if (this.detectCollision(wall) && this.velocity.x === -5) {
-            this.velocity.x = 5;
+        if (this.detectCollision(wall) && this.velocity.x === -3) {
+            this.velocity.x = 3;
             this.velocity.y = 0;
             this.source = {y: 64, w: 96, h: 32}
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
-        } else if (this.detectCollision(wall) && this.velocity.x === 5) {
-            this.velocity.x = -5;
+        } else if (this.detectCollision(wall) && this.velocity.x === 3) {
+            this.velocity.x = -3;
             this.velocity.y = 0;
             this.source = { y: 32, w: 96, h: 32}
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
-        } else if (this.detectCollision(wall) && this.velocity.y === -5) {
+        } else if (this.detectCollision(wall) && this.velocity.y === -3) {
             this.velocity.x = 0;
-            this.velocity.y = 5;
+            this.velocity.y = 3;
             this.source = { y: 0, w: 96, h: 32}
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
-        } else if (this.detectCollision(wall) && this.velocity.y === 5) {
+        } else if (this.detectCollision(wall) && this.velocity.y === 3) {
             this.velocity.x = 0;
-            this.velocity.y = -5;
+            this.velocity.y = -3;
             this.source = {y: 96, w: 96, h: 32}
             this.x = this.x + this.velocity.x;
             this.y = this.y + this.velocity.y;
@@ -150,27 +142,28 @@ class Skeleton extends Ghoul {
 
         runsAgainstWalls(wall) {
 
-            if (this.detectCollision(wall) && this.velocity.x === -3) {
-                this.velocity.x = 3;
+
+            if (this.detectCollision(wall) && this.velocity.x === -2) {
+                this.velocity.x = 2;
                 this.velocity.y = 0;
                 this.source = {y: 64, w: 96, h: 32}
                 this.x = this.x + this.velocity.x;
                 this.y = this.y + this.velocity.y;
-            } else if (this.detectCollision(wall) && this.velocity.x === 3) {
-                this.velocity.x = -3;
+            } else if (this.detectCollision(wall) && this.velocity.x === 2) {
+                this.velocity.x = -2;
                 this.velocity.y = 0;
                 this.source = { y: 32, w: 96, h: 32}
                 this.x = this.x + this.velocity.x;
                 this.y = this.y + this.velocity.y;
-            } else if (this.detectCollision(wall) && this.velocity.y === -3) {
+            } else if (this.detectCollision(wall) && this.velocity.y === -2) {
                 this.velocity.x = 0;
-                this.velocity.y = 3
+                this.velocity.y = 2
                 this.source = { y: 0, w: 96, h: 32}
                 this.x = this.x + this.velocity.x;
                 this.y = this.y + this.velocity.y;
-            } else if (this.detectCollision(wall) && this.velocity.y === 3) {
+            } else if (this.detectCollision(wall) && this.velocity.y === 2) {
                 this.velocity.x = 0;
-                this.velocity.y = -3;
+                this.velocity.y = -2;
                 this.source = {y: 96, w: 96, h: 32}
                 this.x = this.x + this.velocity.x;
                 this.y = this.y + this.velocity.y;
