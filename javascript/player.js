@@ -114,6 +114,7 @@ class Player extends Template {
                 ctx.fillStyle = 'black'
                 ctx.fillRect(0,0,canvas.width, canvas.height,)
                 trapScreen.style.display = 'flex'
+                backgroundNoise.stop()
 
             }, 1000 + 500);
 

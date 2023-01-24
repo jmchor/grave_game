@@ -23,7 +23,7 @@ let inventory
 let characterSteps
 let backgroundNoise
 
-function sound(src, pbr, vol,loop) {
+function sound(src, pbr, vol, loop) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
@@ -73,7 +73,7 @@ const graveSite = {
     startGame: function() {
 
         characterSteps = new sound("audio/stepstone_5.wav", 4, 1, false);
-        backgroundNoise = new sound("audio/eerie.mp3", 1, 0.2, true);
+        backgroundNoise = new sound("audio/eerie.mp3", 1, 0.1, true);
 
 
         timer = setInterval(() => {
