@@ -23,12 +23,13 @@ let inventory
 let characterSteps
 let backgroundNoise
 
-function sound(src) {
+function sound(src, pbr, vol) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
-    this.sound.playbackRate = 4;
+    this.sound.playbackRate = pbr;
+    this.sound.volume = vol;
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
     this.play = function(){
