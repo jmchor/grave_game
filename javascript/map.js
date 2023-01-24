@@ -223,6 +223,14 @@ function drawMap(){
         floor.draw();
     })
 
+        ctx.fillStyle = '#f0ddb8'
+        ctx.fillRect(0, 715, 1200, 85)
+
+        ctx.strokeStyle = "#816852"
+        ctx.lineWidth = 5
+        ctx.strokeRect(3, 715, 985, 83)
+        ctx.strokeRect(990, 715, 208, 83)
+
 
 
 }
@@ -233,6 +241,7 @@ function sound(src) {
     this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
+    this.sound.playbackRate = 4;
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
     this.play = function(){
