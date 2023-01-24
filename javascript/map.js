@@ -66,9 +66,17 @@ class Lever extends Key {
 
         this.img = new Image();
         this.img.src = 'img/Tile_21.png'
-
     }
 }
+class LeverPulled extends Key {
+    constructor (x, y, w, h, img) {
+        super(x, y, w, h, img)
+
+        this.img = new Image();
+        this.img.src = 'img/Tile_21_activated.png'
+    }
+}
+
 
 class Item extends Key {
     constructor (x, y, w, h, img) {
@@ -209,6 +217,7 @@ function drawMap(){
                     case 'D':
                         if (!graveSite.hasPulledLever) {
                             walls.push( new PenetrableWall(25 * count, 25 * index, 25, 25, 'black'))}
+                        break;
                 default:
                     break;
             }
@@ -223,28 +232,19 @@ function drawMap(){
         floor.draw();
     })
 
+        ctx.fillStyle = '#f0ddb8'
+        ctx.fillRect(0, 715, 1200, 85)
+
+        ctx.strokeStyle = "#816852"
+        ctx.lineWidth = 5
+        ctx.strokeRect(3, 715, 985, 83)
+        ctx.strokeRect(990, 715, 208, 83)
+
 
 
 }
 
 
-function sound(src, pbr, vol) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.playbackRate = pbr;
-    this.sound.volume = vol;
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
-
-    }
-    this.stop = function(){
-      this.sound.pause();
-    }
-  }
 
 
 
