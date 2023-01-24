@@ -23,13 +23,16 @@ let inventory
 let characterSteps
 let backgroundNoise
 
-function sound(src, pbr, vol) {
+function sound(src, pbr, vol,loop) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.playbackRate = pbr;
     this.sound.volume = vol;
+    if(loop) {
+        this.sound.loop = true;
+    }
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
     this.play = function(){
@@ -69,8 +72,8 @@ const graveSite = {
 
     startGame: function() {
 
-        characterSteps = new sound("audio/stepstone_5.wav", 4, 1);
-        backgroundNoise = new sound("audio/eerie.mp3", 1, 0.2);
+        characterSteps = new sound("audio/stepstone_5.wav", 4, 1, false);
+        backgroundNoise = new sound("audio/eerie.mp3", 1, 0.2, true);
 
 
         timer = setInterval(() => {
@@ -168,9 +171,11 @@ const graveSite = {
 
         walls = []
         floors = []
+        tiles = []
         inventory = []
 
         if (graveSite.isGamePaused) return
+
 
         if (graveSite.isLeftKeyPressed) {
             player.moveLeft();
