@@ -23,7 +23,7 @@ class Dirt extends Wall {
         super(x, y, w, h, img)
 
         this.img = new Image();
-        this.img.src = 'img/floor.png'
+        this.img.src = 'img/muddy_ground.png'
 
     }
 
@@ -232,10 +232,16 @@ function drawMap(){
         floor.draw();
     })
 
-        ctx.fillStyle = '#f0ddb8'
+        ctx.fillStyle = '#938d7d'
         ctx.fillRect(0, 715, 1200, 85)
 
-        ctx.strokeStyle = "#816852"
+        ctx.strokeStyle = 'black'
+        ctx.lineWidth = 1
+        ctx.strokeRect(6, 718, 979, 77)
+        ctx.strokeRect(993, 718, 202, 77)
+
+
+        ctx.strokeStyle = "#624030"
         ctx.lineWidth = 5
         ctx.strokeRect(3, 715, 985, 83)
         ctx.strokeRect(990, 715, 208, 83)
