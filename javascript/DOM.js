@@ -121,10 +121,12 @@ window.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && graveSite.isGamePaused === false && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
         graveSite.isGamePaused = true;
         pauseScreen.style.display = 'flex';
+        backgroundNoise.stop()
     } else if (e.key === 'Escape' && graveSite.isGamePaused === true && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
         graveSite.isGamePaused = false;
         pauseScreen.style.display = 'none';
         keyScreen.style.display = 'none';
+        backgroundNoise.play()
         graveSite.update()
     } else if (e.key === 'Escape' && graveSite.isGameOver === true || graveSite.hasGameStarted === false) {
         return  }
