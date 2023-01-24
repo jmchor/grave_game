@@ -20,7 +20,8 @@ let monk
 let keyPlace
 let pickPlace
 let inventory
-let mySound
+let characterSteps
+let backgroundNoise
 
 
 
@@ -51,7 +52,8 @@ const graveSite = {
 
     startGame: function() {
 
-        mySound = new sound("audio/stepstone_5.wav");
+        characterSteps = new sound("audio/stepstone_5.wav", 4, 1);
+        backgroundNoise = new sound("audio/eerie.mp3", 1, 0.2);
 
 
         timer = setInterval(() => {
@@ -73,6 +75,7 @@ const graveSite = {
 
         graveSite.displayTime()
         graveSite.update()
+        backgroundNoise.play()
     },
 
     restartGame: function() {

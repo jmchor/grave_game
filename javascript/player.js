@@ -21,7 +21,7 @@ class Player extends Template {
 
         this.stepCount++
         if (this.stepCount % 3 === 0 && this.velocity.x !== 0 || this.stepCount % 10 === 0 && this.velocity.y !== 0) {
-            mySound.play()
+            characterSteps.play()
         }
 
         if (this.currentFrame > 2) this.currentFrame = 0
@@ -173,6 +173,7 @@ class Player extends Template {
             ctx.fillRect(0,0,canvas.width, canvas.height,)
             winScreen.style.display = 'flex'
             winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score}`
+            backgroundNoise.stop()
 
 
         }
@@ -197,6 +198,10 @@ class Player extends Template {
             ctx.fillRect(0,0,canvas.width, canvas.height,)
             loseScreen.style.display = 'flex'
             loseScore.innerHTML = `The ghouls got to you after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score}`
+            backgroundNoise.stop()
+
+
+
 
 
         }

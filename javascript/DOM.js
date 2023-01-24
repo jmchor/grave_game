@@ -8,8 +8,6 @@ const winScore = document.getElementById('win-score')
 const loseScore = document.getElementById('lose-score')
 const loseScreen = document.getElementById('lose-screen')
 const trapScreen = document.getElementById('trap-screen')
-let inventoryImg = new Image();
-inventoryImg.src = 'img/inventory.png'
 
 
 
@@ -45,26 +43,26 @@ document.addEventListener('keydown', function(e) {
         switch (e.key) {
             case 'ArrowLeft':
                 graveSite.isLeftKeyPressed = false;
-                mySound.stop()
+                characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
 
                 break;
             case 'ArrowRight':
                 graveSite.isRightKeyPressed = false;
-                mySound.stop()
+                characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
             case 'ArrowUp':
                 graveSite.isUpKeyPressed = false;
-                mySound.stop()
+                characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
             case 'ArrowDown':
                 graveSite.isDownKeyPressed = false;
-                mySound.stop()
+                characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
