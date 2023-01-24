@@ -66,9 +66,17 @@ class Lever extends Key {
 
         this.img = new Image();
         this.img.src = 'img/Tile_21.png'
-
     }
 }
+class LeverPulled extends Key {
+    constructor (x, y, w, h, img) {
+        super(x, y, w, h, img)
+
+        this.img = new Image();
+        this.img.src = 'img/Tile_21_activated.png'
+    }
+}
+
 
 class Item extends Key {
     constructor (x, y, w, h, img) {
@@ -209,6 +217,7 @@ function drawMap(){
                     case 'D':
                         if (!graveSite.hasPulledLever) {
                             walls.push( new PenetrableWall(25 * count, 25 * index, 25, 25, 'black'))}
+                        break;
                 default:
                     break;
             }

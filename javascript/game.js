@@ -4,7 +4,7 @@ let key
 let pickaxe
 let cantTouchThis
 let door
-let door2
+let lever
 let currentTime
 let currentFrame
 let score
@@ -85,7 +85,7 @@ const graveSite = {
             drawMap()
         player.draw();
         door.draw()
-        door2.draw()
+        lever.draw()
 
         graveSite.displayTime()
         graveSite.update()
@@ -236,7 +236,13 @@ const graveSite = {
 
 
         door.draw()
-        door2.draw()
+        if (!graveSite.hasPulledLever) {
+            lever.draw() }
+
+        else if (graveSite.hasPulledLever) {
+            leverPulled.draw()
+        }
+
         player.draw();
         ghoul.draw();
         ghoul2.draw();
@@ -269,7 +275,8 @@ if (graveSite.isLevelOne){
     pickaxe = new Pickaxe(160, 40, 50, 50)
     cantTouchThis = new Item(745, 625, 40, 40)
     door = new Door(1070, 0, 60 , 80, 'green')
-    door2 = new Lever (1070, 650, 30 , 30, 'green')
+    lever = new Lever (1070, 650, 30 , 30, 'green')
+    leverPulled = new LeverPulled (1070, 650, 30 , 30, 'green')
     currentTime = 0;
     currentFrame = 0;
     score = 150;
@@ -291,7 +298,8 @@ if (graveSite.isLevelTwo){
     pickaxe = new Pickaxe(160, 40, 50, 50)
     cantTouchThis = new Item(745, 625, 40, 40)
     door = new Door(1070, 0, 60 , 80, 'green')
-    door2 = new Lever (1070, 650, 30 , 30, 'green')
+    lever = new Lever (1070, 650, 30 , 30, 'green')
+    leverPulled = new LeverPulled (1070, 650, 30 , 30, 'green')
     currentTime = 0;
     currentFrame = 0;
     score = 150;
