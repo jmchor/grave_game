@@ -22,6 +22,22 @@ let pickPlace
 let inventory
 let mySound
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.playbackRate = 4;
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+
 
 
 const graveSite = {
@@ -178,7 +194,7 @@ const graveSite = {
 
 
         drawMap()
-        player.inventory()
+        // player.inventory+()
 
         walls.forEach(wall => {
             let previousY
