@@ -291,11 +291,11 @@ if (graveSite.isLevelOne){
     score = 150;
     ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
     ghoul2 = new Ghoul(300, 50, 50, 50, 'pink', {x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50})
-    skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
-    skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
-    skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
-    skeleton4 = new Skeleton(470, 30, 50, 50, 'grey', {x: -5, y: 0})
-    monk = new Monk(165, 645, 50, 50, 'blue', {x: 3, y: 0})
+    skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -3, y: 0}, 1)
+    skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -3}, 3)
+    skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 3}, 3)
+    skeleton4 = new Skeleton(470, 30, 50, 50, 'grey', {x: -3, y: 0})
+    monk = new Monk(165, 645, 50, 50, 'blue', {x: 2, y: 0})
     keyPlace = [key]
     pickPlace = [pickaxe]
     inventory = []
