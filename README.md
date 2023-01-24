@@ -34,9 +34,11 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ## Data structure
 
-### main.js
 
 ### DOM.js
+
+- handle all DOM API queries
+- key events
 
 ### game.js
 
