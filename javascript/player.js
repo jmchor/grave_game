@@ -99,7 +99,7 @@ class Player extends Template {
             inventory.push(key)
         }
         if (inventory.includes(key)) {
-            let inventoryKey = new Key (55, 735, 50, 50, 'blue')
+            let inventoryKey = new Key (240, 730, 50, 50, 'blue')
             inventoryKey.draw()
 
         }
@@ -138,18 +138,51 @@ class Player extends Template {
             inventory.push(pickaxe)
         }
         if (inventory.includes(pickaxe)) {
-            let inventoryPickaxe = new Pickaxe (110, 735, 50, 50, 'blue')
+            let inventoryPickaxe = new Pickaxe (320, 730, 50, 50, 'blue')
             inventoryPickaxe.draw()
 
         }
     }
 
+
+
     function openDoor() {
 
-        if (player.doorCollision(door) && graveSite.hasDoorKey === false) {
+        //open door to next level
+
+        let levelOneScore = graveSite.score
+
+        if (player.doorCollision(door) && graveSite.hasDoorKey && graveSite.isLevelOne && graveSite.isLevelTwo === false) {
+
+
+            graveSite.isGamePaused = true
+
+
+
+            ctx.clearRect(0,0,canvas.width, canvas.height)
+            ctx.fillStyle = 'black'
+            ctx.fillRect(0,0,canvas.width, canvas.height,)
+            nextLevel.style.display = 'flex'
+            nextLevel.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score} <br> <br> The Next Level will start soon! `
+            backgroundNoise.stop()
+
+            setTimeout(() => {
+                graveSite.isLevelOne = false
+                graveSite.isLevelTwo = true
+                clearInterval(timer);
+                clearTimeout(itemTimer);
+                graveSite.score = 150
+                nextLevel.style.display = 'none'
+
+                graveSite.restartGame()
+
+            }, 3000);
+
          }
 
-       else if (player.doorCollision(door) && graveSite.hasDoorKey) {
+         // win the game!
+
+       else if (player.doorCollision(door) && graveSite.hasDoorKey && graveSite.isLevelTwo && graveSite.isLevelOne === false) {
             graveSite.isGameOver = true;
             graveSite.isGamePaused = true;
             graveSite.hasPlayerWon = true;
@@ -157,8 +190,11 @@ class Player extends Template {
             ctx.fillStyle = 'black'
             ctx.fillRect(0,0,canvas.width, canvas.height,)
             winScreen.style.display = 'flex'
-            winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score}`
+            winScore.innerHTML = `You escaped after ${graveSite.getMinutes()} minutes and ${graveSite.getSeconds()} seconds <br> <br> Your score was ${graveSite.score + levelOneScore}`
             backgroundNoise.stop()
+
+            graveSite.isLevelTwo = false
+            graveSite.isLevelOne = true
 
 
         }
