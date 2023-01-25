@@ -1,3 +1,24 @@
+function sound(src, pbr, vol, loop) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.playbackRate = pbr;
+    this.sound.volume = vol;
+    if(loop) {
+        this.sound.loop = true;
+    }
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+
+
 function getKey (){
     if (player.detectCollision(key)) {
         game.hasDoorKey = true;
@@ -63,6 +84,8 @@ function solveLevel() {
     //open door to next level
 
     let levelOneScore = game.score
+    winSound = new sound('audio/win.wav', 1, 0.5, false)
+    winSound.play()
 
     if (player.doorCollision(door) && game.hasDoorKey && game.isLevelOne && game.isLevelTwo === false) {
 
@@ -93,6 +116,7 @@ function solveLevel() {
      // win the game!
 
    else if (player.doorCollision(door) && game.hasDoorKey && game.isLevelTwo && game.isLevelOne === false) {
+
         game.isGameOver = true;
         game.isGamePaused = true;
         game.hasPlayerWon = true;
@@ -120,7 +144,9 @@ function useLever() {
 function encounterEnemy(enemy) {
 
     if (player.detectCollision(enemy) && game.isIntangible === false) {
-        console.log("You've been caught!")
+
+        gameOverSound = new sound("audio/game_over.wav", 1, 0.5, false);
+        gameOverSound.play()
         game.isGameOver = true;
         game.isGamePaused = true;
         game.hasPlayerLost = true;
@@ -173,6 +199,10 @@ function drawMap(){
                         new Wall(25 * count, 25 * index, 25, 25, 'black')
                     )
                     break;
+
+
+
+
                 case 'S':
                     walls.push(
                         new Stairs(25 * count, 25 * index, 25, 25, 'black')

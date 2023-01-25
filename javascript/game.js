@@ -22,26 +22,10 @@ let pickPlace
 let inventory
 let characterSteps
 let backgroundNoise
+let gameOverSound
+let winSound
 
-function sound(src, pbr, vol, loop) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.playbackRate = pbr;
-    this.sound.volume = vol;
-    if(loop) {
-        this.sound.loop = true;
-    }
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
-    }
-    this.stop = function(){
-      this.sound.pause();
-    }
-  }
+
 
 
 
@@ -75,6 +59,7 @@ const game = {
 
         characterSteps = new sound("audio/stepstone_5.wav", 4, 1, false);
         backgroundNoise = new sound("audio/eerie.mp3", 1, 0.1, true);
+
 
 
         timer = setInterval(() => {
