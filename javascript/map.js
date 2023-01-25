@@ -27,7 +27,6 @@ class Dirt extends Wall {
 
     }
 
-
 }
 
 class Stairs extends Template {
@@ -40,55 +39,21 @@ class Stairs extends Template {
     }
 }
 
-class Key extends Template {
-    constructor (x, y, w, h, img) {
-        super(x, y, w, h, img)
-
+class Item {
+    constructor (x, y, w, h, imgSrc) {
+        this.x= x;
+        this.y= y;
+        this.w= w;
+        this.h= h;
         this.img = new Image();
-        this.img.src = 'img/key.png'
+        this.img.src = imgSrc
 
     }
-}
 
-class Pickaxe extends Key {
-    constructor (x, y, w, h, img) {
-        super(x, y, w, h, img)
-
-        this.img = new Image();
-        this.img.src = 'img/pickaxe2.png'
-
+    draw() {
+        ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
     }
 }
-
-class Lever extends Key {
-    constructor (x, y, w, h, img) {
-        super(x, y, w, h, img)
-
-        this.img = new Image();
-        this.img.src = 'img/Tile_21.png'
-    }
-}
-class LeverPulled extends Key {
-    constructor (x, y, w, h, img) {
-        super(x, y, w, h, img)
-
-        this.img = new Image();
-        this.img.src = 'img/Tile_21_activated.png'
-    }
-}
-
-
-class Item extends Key {
-    constructor (x, y, w, h, img) {
-        super(x, y, w, h, img)
-
-        this.img = new Image();
-        this.img.src = 'img/item.png'
-
-    }
-}
-
-
 
 class Door extends Template {
     constructor (x, y, w, h, img) {
@@ -174,84 +139,6 @@ let mapTwo = [
     ['0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0'],
 
 ]
-
-function drawMap(){
-
-    if (graveSite.isLevelOne) {
-        map = mapOne
-    } else if (graveSite.isLevelTwo) {
-        map = mapTwo
-    }
-    map.forEach((row, index) => {
-        row.forEach((cell, count) => {
-            switch (cell) {
-                case '-':
-                    walls.push(
-                        new Wall(25 * count, 25 * index, 25, 25, 'black')
-                    )
-                    break;
-                case 'S':
-                    walls.push(
-                        new Stairs(25 * count, 25 * index, 25, 25, 'black')
-                    )
-                    break;
-                case 'E':
-                    floors.push(
-                        new Dirt(25 * count, 25 * index, 25, 25, 'orange')
-                    );
-
-                    break;
-                 case 'T':
-                    if (graveSite.hasDoorKey) {
-                        walls.push(
-                            new Wall(25 * count, 25 * index, 25, 25, 'black')
-                        )
-                    }
-                    break;
-                case 'P':
-                    if (!graveSite.hasDoorKey || !graveSite.hasPickaxe) {
-                    walls.push(
-                        new Wall(25 * count, 25 * index, 25, 25, 'white'))
-                    }
-                    break;
-                    case 'D':
-                        if (!graveSite.hasPulledLever) {
-                            walls.push( new PenetrableWall(25 * count, 25 * index, 25, 25, 'black'))}
-                        break;
-                default:
-                    break;
-            }
-        })
-    })
-
-    walls.forEach(wall => {
-        wall.draw();
-
-})
-    floors.forEach(floor => {
-        floor.draw();
-    })
-
-        ctx.fillStyle = '#938d7d'
-        ctx.fillRect(0, 715, 1200, 85)
-
-        ctx.strokeStyle = 'black'
-        ctx.lineWidth = 1
-
-        ctx.strokeRect(6, 718, 202, 77)
-        ctx.strokeRect(214, 718, 773, 77)
-        ctx.strokeRect(993, 718, 200, 77)
-
-
-        ctx.strokeStyle = "#624030"
-        ctx.lineWidth = 5
-        ctx.strokeRect(3, 715, 208, 83)
-        ctx.strokeRect(211, 715, 985, 83)
-        ctx.strokeRect(990, 715, 208, 83)
-
-
-
-}
 
 
 

@@ -13,25 +13,26 @@ const nextLevel = document.getElementById('next-level-screen')
 
 
 
+
 document.addEventListener('keydown', function(e) {
 
         switch (e.key) {
             case 'ArrowLeft':
 
-                graveSite.isLeftKeyPressed = true;
+                game.isLeftKeyPressed = true;
                 player.moveLeft()
 
                 break;
             case 'ArrowRight':
-                graveSite.isRightKeyPressed = true;
+                game.isRightKeyPressed = true;
                 player.moveRight()
                 break;
             case 'ArrowUp':
-                graveSite.isUpKeyPressed = true;
+                game.isUpKeyPressed = true;
                 player.moveUp()
                 break;
             case 'ArrowDown':
-                graveSite.isDownKeyPressed = true;
+                game.isDownKeyPressed = true;
                 player.moveDown()
                 break;
 
@@ -43,26 +44,26 @@ document.addEventListener('keydown', function(e) {
 
         switch (e.key) {
             case 'ArrowLeft':
-                graveSite.isLeftKeyPressed = false;
+                game.isLeftKeyPressed = false;
                 characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
 
                 break;
             case 'ArrowRight':
-                graveSite.isRightKeyPressed = false;
+                game.isRightKeyPressed = false;
                 characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
             case 'ArrowUp':
-                graveSite.isUpKeyPressed = false;
+                game.isUpKeyPressed = false;
                 characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 break;
             case 'ArrowDown':
-                graveSite.isDownKeyPressed = false;
+                game.isDownKeyPressed = false;
                 characterSteps.stop()
                 player.velocity.x = 0;
                 player.velocity.y = 0;
@@ -78,33 +79,33 @@ window.addEventListener('keydown', function(e) {
 
     if (e.key === 'Enter') {
 
-        if (graveSite.hasDoorKey && graveSite.isGamePaused === false && graveSite.isTrapped === false) {
-            openDoor()
+        if (game.hasDoorKey && game.isGamePaused === false && game.isTrapped === false) {
+            solveLevel()
         }
 
-        else if (!graveSite.hasDoorKey && player.detectCollision(door)) {
+        else if (!game.hasDoorKey && player.detectCollision(door)) {
             keyScreen.style.display = 'flex'
         }
-        else if (graveSite.isGameOver && graveSite.hasPlayerWon ) {
+        else if (game.isGameOver && game.hasPlayerWon ) {
             winScreen.style.display = 'none'
-            graveSite.restartGame()
+            game.restartGame()
         }
-        else if (graveSite.isGameOver && graveSite.hasPlayerLost) {
+        else if (game.isGameOver && game.hasPlayerLost) {
             loseScreen.style.display = 'none'
-            graveSite.restartGame()
+            game.restartGame()
         }
-        else if (graveSite.isTrapped) {
+        else if (game.isTrapped) {
             trapScreen.style.display = 'none'
-            graveSite.restartGame()
+            game.restartGame()
 
-        } else if (graveSite.isTrapped) {
+        } else if (game.isTrapped) {
             trapScreen.style.display = 'none'
-            graveSite.restartGame()
+            game.restartGame()
 
         }
 
 
-        else if (graveSite.hasGameStarted === false && graveSite.isGameOver === false && graveSite.isGamePaused === false && graveSite.isTrapped === false) {
+        else if (game.hasGameStarted === false && game.isGameOver === false && game.isGamePaused === false && game.isTrapped === false) {
             return
         }
 
@@ -115,10 +116,10 @@ window.addEventListener('keydown', function(e) {
 
 window.addEventListener('keydown', function(e) {
 
-    if (e.key === ' ' && graveSite.hasGameStarted === false) {
-        graveSite.hasGameStarted = true;
-        graveSite.startGame()
-        graveSite.isGamePaused = false;
+    if (e.key === ' ' && game.hasGameStarted === false) {
+        game.hasGameStarted = true;
+        game.startGame()
+        game.isGamePaused = false;
         splashScreen.style.display = 'none';
     }
 
@@ -126,23 +127,23 @@ window.addEventListener('keydown', function(e) {
 
     // }
 
-    else if (e.key === 'e' && graveSite.hasPulledLever === false) {
-        graveSite.hasPulledLever = true;
+    else if (e.key === 'e' && game.hasPulledLever === false) {
+        game.hasPulledLever = true;
     }
 
-    else if (e.key === 'Escape' && graveSite.isGamePaused === false && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
-        graveSite.isGamePaused = true;
+    else if (e.key === 'Escape' && game.isGamePaused === false && game.hasGameStarted === true && game.isGameOver === false) {
+        game.isGamePaused = true;
         pauseScreen.style.display = 'flex';
         backgroundNoise.stop()
     }
-    else if (e.key === 'Escape' && graveSite.isGamePaused === true && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
-        graveSite.isGamePaused = false;
+    else if (e.key === 'Escape' && game.isGamePaused === true && game.hasGameStarted === true && game.isGameOver === false) {
+        game.isGamePaused = false;
         pauseScreen.style.display = 'none';
         keyScreen.style.display = 'none';
         backgroundNoise.play()
-        graveSite.update()
+        game.update()
     }
-    else if (e.key === 'Escape' && graveSite.isGameOver === true || graveSite.hasGameStarted === false) {
+    else if (e.key === 'Escape' && game.isGameOver === true || game.hasGameStarted === false) {
         return  }
 
 

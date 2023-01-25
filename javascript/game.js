@@ -45,7 +45,7 @@ function sound(src, pbr, vol, loop) {
 
 
 
-const graveSite = {
+const game = {
 
     // The game's configuration
     hasGameStarted: false,
@@ -79,24 +79,24 @@ const graveSite = {
 
         timer = setInterval(() => {
             currentTime += 1;
-            graveSite.score -= 1;
+            game.score -= 1;
 
             }, 1000);
 
         itemTimer = setTimeout(() => {
-            graveSite.hasItemSpawned = true;
-        }, graveSite.randomTime);
+            game.hasItemSpawned = true;
+        }, game.randomTime);
 
 
-        graveSite.hasGameStarted = true;
+        game.hasGameStarted = true;
             drawMap()
         player.draw();
         door.draw()
         lever.draw()
-        graveSite.displayScore()
+        game.displayScore()
 
-        graveSite.displayTime()
-        graveSite.update()
+        game.displayTime()
+        game.update()
         backgroundNoise.play()
     },
 
@@ -104,13 +104,13 @@ const graveSite = {
         currentTime = 0;
         clearInterval(timer);
         clearTimeout(itemTimer);
-        graveSite.isGameOver = false;
-        graveSite.isGamePaused = false;
-        graveSite.hasGameStarted = false;
-        graveSite.hasDoorKey = false;
-        graveSite.hasPickaxe = false;
-        graveSite.hasPulledLever = false;
-        graveSite.isTrapped = false;
+        game.isGameOver = false;
+        game.isGamePaused = false;
+        game.hasGameStarted = false;
+        game.hasDoorKey = false;
+        game.hasPickaxe = false;
+        game.hasPulledLever = false;
+        game.isTrapped = false;
         wallsAreSolid = true,
         isIntangible = false,
         hasItemSpawned =  false,
@@ -119,13 +119,19 @@ const graveSite = {
         pickPlace = [pickaxe]
         inventory = []
 
-        if (graveSite.isLevelOne ) {
+        if (game.isLevelOne ) {
+            canvas.style.backgroundImage = "url('img/Ground_02.png')";
+            canvas.style.backgroundSize = '200px'
+            canvas.style.backgroundRepeat = 'repeat'
             player.x = 50;
         player.y = 610;
         key.y = 260
         pickaxe.y = 40
 
-        } else if (graveSite.isLevelTwo) {
+        } else if (game.isLevelTwo) {
+            canvas.style.backgroundImage = "url('img/muddy_ground.png')";
+            canvas.style.backgroundSize = '300px'
+            canvas.style.backgroundRepeat = 'repeat'
             map = mapTwo
             player.x = 50;
         player.y = 150;
@@ -136,7 +142,7 @@ const graveSite = {
 
         ctx.clearRect(0,0,canvas.width, canvas.height)
 
-        graveSite.startGame(); },
+        game.startGame(); },
 
     getSeconds: function() {
        return Math.floor(currentTime % 60);
@@ -155,8 +161,8 @@ const graveSite = {
 	},
 
     displayTime: function() {
-        let seconds = graveSite.computeTwoDigitNumber(graveSite.getSeconds());
-        let minutes = graveSite.computeTwoDigitNumber(graveSite.getMinutes());
+        let seconds = game.computeTwoDigitNumber(game.getSeconds());
+        let minutes = game.computeTwoDigitNumber(game.getMinutes());
         ctx.fillStyle = 'black';
         ctx.font = '40px "Work Sans"';
         ctx.fillText(`${minutes}:${seconds}`, 1045, 770);
@@ -166,7 +172,7 @@ const graveSite = {
 
         ctx.fillStyle = 'black';
         ctx.font = '40px "Work Sans"';
-        ctx.fillText(`${graveSite.score}`, 70 , 770)
+        ctx.fillText(`${game.score}`, 70 , 770)
 
     },
 
@@ -187,19 +193,19 @@ const graveSite = {
         tiles = []
         inventory = []
 
-        if (graveSite.isGamePaused) return
+        if (game.isGamePaused) return
 
 
-        if (graveSite.isLeftKeyPressed) {
+        if (game.isLeftKeyPressed) {
             player.moveLeft();
         }
-        if (graveSite.isRightKeyPressed) {
+        if (game.isRightKeyPressed) {
             player.moveRight();
         }
-        if (graveSite.isUpKeyPressed) {
+        if (game.isUpKeyPressed) {
             player.moveUp();
         }
-        if (graveSite.isDownKeyPressed) {
+        if (game.isDownKeyPressed) {
             player.moveDown();
         }
         player.update();
@@ -216,7 +222,7 @@ const graveSite = {
 
 
         drawMap()
-        graveSite.displayScore()
+        game.displayScore()
         // player.inventory+()
 
         walls.forEach(wall => {
@@ -229,7 +235,7 @@ const graveSite = {
             skeleton4.runsAgainstWalls(wall)
             monk.runsAgainstWalls(wall)
 
-            if (player.detectCollision(wall) && graveSite.wallsAreSolid) {
+            if (player.detectCollision(wall) && game.wallsAreSolid) {
 
                 previousY = player.y - player.velocity.y;
                 previousX = player.x - player.velocity.x
@@ -259,10 +265,10 @@ const graveSite = {
 
 
         door.draw()
-        if (!graveSite.hasPulledLever) {
+        if (!game.hasPulledLever) {
             lever.draw() }
 
-        else if (graveSite.hasPulledLever) {
+        else if (game.hasPulledLever) {
             leverPulled.draw()
         }
 
@@ -275,31 +281,31 @@ const graveSite = {
         skeleton4.draw()
         monk.draw()
 
-        if (graveSite.hasItemSpawned) {
+        if (game.hasItemSpawned) {
         cantTouchThis.draw()
         }
 
 
-        graveSite.displayTime()
+        game.displayTime()
 
         getKey()
         getPickaxe()
         getPowerUp(cantTouchThis)
 
-        requestAnimationFrame(graveSite.update)
+        requestAnimationFrame(game.update)
 
     }
 }
 
 
-if (graveSite.isLevelOne && graveSite.isLevelTwo === false){
+if (game.isLevelOne && game.isLevelTwo === false){
     player = new Player(50, 610, 50, 50, 'brown');
-    key = new Key(275, 260 , 50, 50)
-    pickaxe = new Pickaxe(160, 40, 50, 50)
-    cantTouchThis = new Item(745, 625, 40, 40)
+    key = new Item (275, 260 , 50, 50, 'img/key.png')
+    pickaxe = new Item(160, 40, 50, 50, 'img/pickaxe2.png')
+    cantTouchThis = new Item(745, 625, 40, 40, 'img/item.png')
     door = new Door(1070, 0, 60 , 80, 'green')
-    lever = new Lever (1070, 650, 30 , 30, 'green')
-    leverPulled = new LeverPulled (1070, 650, 30 , 30, 'green')
+    lever = new Item (1070, 650, 30 , 30, 'img/Tile_21.png')
+    leverPulled = new Item (1070, 650, 30 , 30, 'img/Tile_21_activated.png')
     currentTime = 0;
     currentFrame = 0;
     score = 150;
@@ -315,7 +321,7 @@ if (graveSite.isLevelOne && graveSite.isLevelTwo === false){
     inventory = []
 }
 
-if (graveSite.isLevelTwo && graveSite.isLevelOne === false ){
+if (game.isLevelTwo && game.isLevelOne === false ){
     player = new Player(50, 610, 50, 50, 'brown');
     key = new Key(275, 260 , 50, 50)
     pickaxe = new Pickaxe(160, 40, 50, 50)
