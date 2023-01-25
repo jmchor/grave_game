@@ -8,6 +8,7 @@ const winScore = document.getElementById('win-score')
 const loseScore = document.getElementById('lose-score')
 const loseScreen = document.getElementById('lose-screen')
 const trapScreen = document.getElementById('trap-screen')
+const nextLevel = document.getElementById('next-level-screen')
 
 
 
@@ -81,7 +82,7 @@ window.addEventListener('keydown', function(e) {
             openDoor()
         }
 
-        else if (!graveSite.hasDoorKey && graveSite.hasPlayerWon === false && graveSite.hasPlayerLost === false && graveSite.hasGameStarted && player.detectCollision(door)) {
+        else if (!graveSite.hasDoorKey && player.detectCollision(door)) {
             keyScreen.style.display = 'flex'
         }
         else if (graveSite.isGameOver && graveSite.hasPlayerWon ) {
@@ -96,7 +97,14 @@ window.addEventListener('keydown', function(e) {
             trapScreen.style.display = 'none'
             graveSite.restartGame()
 
-        } else if (graveSite.hasGameStarted === false && graveSite.isGameOver === false && graveSite.isGamePaused === false && graveSite.isTrapped === false) {
+        } else if (graveSite.isTrapped) {
+            trapScreen.style.display = 'none'
+            graveSite.restartGame()
+
+        }
+
+
+        else if (graveSite.hasGameStarted === false && graveSite.isGameOver === false && graveSite.isGamePaused === false && graveSite.isTrapped === false) {
             return
         }
 
@@ -114,21 +122,27 @@ window.addEventListener('keydown', function(e) {
         splashScreen.style.display = 'none';
     }
 
-    if (e.key === 'e' && graveSite.hasPulledLever === false) {
+    // else if { e.key === 'n' &&
+
+    // }
+
+    else if (e.key === 'e' && graveSite.hasPulledLever === false) {
         graveSite.hasPulledLever = true;
     }
 
-    if (e.key === 'Escape' && graveSite.isGamePaused === false && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
+    else if (e.key === 'Escape' && graveSite.isGamePaused === false && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
         graveSite.isGamePaused = true;
         pauseScreen.style.display = 'flex';
         backgroundNoise.stop()
-    } else if (e.key === 'Escape' && graveSite.isGamePaused === true && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
+    }
+    else if (e.key === 'Escape' && graveSite.isGamePaused === true && graveSite.hasGameStarted === true && graveSite.isGameOver === false) {
         graveSite.isGamePaused = false;
         pauseScreen.style.display = 'none';
         keyScreen.style.display = 'none';
         backgroundNoise.play()
         graveSite.update()
-    } else if (e.key === 'Escape' && graveSite.isGameOver === true || graveSite.hasGameStarted === false) {
+    }
+    else if (e.key === 'Escape' && graveSite.isGameOver === true || graveSite.hasGameStarted === false) {
         return  }
 
 
