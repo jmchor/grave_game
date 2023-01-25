@@ -237,13 +237,16 @@ function drawMap(){
 
         ctx.strokeStyle = 'black'
         ctx.lineWidth = 1
-        ctx.strokeRect(6, 718, 979, 77)
-        ctx.strokeRect(993, 718, 202, 77)
+
+        ctx.strokeRect(6, 718, 202, 77)
+        ctx.strokeRect(214, 718, 773, 77)
+        ctx.strokeRect(993, 718, 200, 77)
 
 
         ctx.strokeStyle = "#624030"
         ctx.lineWidth = 5
-        ctx.strokeRect(3, 715, 985, 83)
+        ctx.strokeRect(3, 715, 208, 83)
+        ctx.strokeRect(211, 715, 985, 83)
         ctx.strokeRect(990, 715, 208, 83)
 
 
