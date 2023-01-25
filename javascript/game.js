@@ -66,8 +66,9 @@ const graveSite = {
     isTrapped: false,
     isLevelOne: true,
     isLevelTwo: false,
+    clearedLevelOne: false,
     score: 150,
-    randomTime : Math.floor(Math.random() * 50000) + 5000,
+    randomTime : Math.floor(Math.random() * 30000) + 5000,
 
 
     startGame: function() {
@@ -92,6 +93,7 @@ const graveSite = {
         player.draw();
         door.draw()
         lever.draw()
+        graveSite.displayScore()
 
         graveSite.displayTime()
         graveSite.update()
@@ -117,17 +119,20 @@ const graveSite = {
         pickPlace = [pickaxe]
         inventory = []
 
-        if (graveSite.isLevelOne) {
+        if (graveSite.isLevelOne ) {
             player.x = 50;
         player.y = 610;
         key.y = 260
         pickaxe.y = 40
 
         } else if (graveSite.isLevelTwo) {
+            map = mapTwo
             player.x = 50;
         player.y = 150;
         key.y = 260
         pickaxe.y = 40 }
+
+
 
         ctx.clearRect(0,0,canvas.width, canvas.height)
 
@@ -155,6 +160,14 @@ const graveSite = {
         ctx.fillStyle = 'black';
         ctx.font = '40px "Work Sans"';
         ctx.fillText(`${minutes}:${seconds}`, 1045, 770);
+    },
+
+    displayScore: function () {
+
+        ctx.fillStyle = 'black';
+        ctx.font = '40px "Work Sans"';
+        ctx.fillText(`${graveSite.score}`, 70 , 770)
+
     },
 
     update: function() {
@@ -203,6 +216,7 @@ const graveSite = {
 
 
         drawMap()
+        graveSite.displayScore()
         // player.inventory+()
 
         walls.forEach(wall => {
@@ -278,7 +292,7 @@ const graveSite = {
 }
 
 
-if (graveSite.isLevelOne){
+if (graveSite.isLevelOne && graveSite.isLevelTwo === false){
     player = new Player(50, 610, 50, 50, 'brown');
     key = new Key(275, 260 , 50, 50)
     pickaxe = new Pickaxe(160, 40, 50, 50)
@@ -301,8 +315,8 @@ if (graveSite.isLevelOne){
     inventory = []
 }
 
-if (graveSite.isLevelTwo){
-    player = new Player(50, 150, 50, 50, 'brown');
+if (graveSite.isLevelTwo && graveSite.isLevelOne === false ){
+    player = new Player(50, 610, 50, 50, 'brown');
     key = new Key(275, 260 , 50, 50)
     pickaxe = new Pickaxe(160, 40, 50, 50)
     cantTouchThis = new Item(745, 625, 40, 40)
@@ -314,9 +328,11 @@ if (graveSite.isLevelTwo){
     score = 150;
     ghoul = new Ghoul(400, 300, 50, 50, 'pink', {x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300})
     ghoul2 = new Ghoul(300, 50, 50, 50, 'pink', {x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50})
-    skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -5, y: 0})
-    skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -5})
-    skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 5})
+    skeleton = new Skeleton(1100, 302, 45, 45, 'grey', {x: -3, y: 0}, 1)
+    skeleton2 = new Skeleton(100, 300, 50, 50, 'grey', {x: 0, y: -3}, 3)
+    skeleton3 = new Skeleton(880, 520 , 50, 50, 'grey', {x: 0, y: 3}, 3)
+    skeleton4 = new Skeleton(470, 30, 50, 50, 'grey', {x: -3, y: 0})
+    monk = new Monk(165, 645, 50, 50, 'blue', {x: 2, y: 0})
     keyPlace = [key]
     pickPlace = [pickaxe]
     inventory = []
