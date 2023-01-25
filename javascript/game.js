@@ -300,10 +300,10 @@ const game = {
 
 if (game.isLevelOne && game.isLevelTwo === false){
     player = new Player(50, 610, 50, 50, 'brown');
+    door = new Door(1070, 0, 60 , 80, 'green')
     key = new Item (275, 260 , 50, 50, 'img/key.png')
     pickaxe = new Item(160, 40, 50, 50, 'img/pickaxe2.png')
     cantTouchThis = new Item(745, 625, 40, 40, 'img/item.png')
-    door = new Door(1070, 0, 60 , 80, 'green')
     lever = new Item (1070, 650, 30 , 30, 'img/Tile_21.png')
     leverPulled = new Item (1070, 650, 30 , 30, 'img/Tile_21_activated.png')
     currentTime = 0;

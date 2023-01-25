@@ -143,7 +143,6 @@ function intangibility() {
 
         setTimeout(() => {
             game.isIntangible = false
-            console.log(game.isIntangible)
         }, 4000);
 
 }
@@ -151,6 +150,7 @@ function getPowerUp(item) {
 
     if (player.detectCollision(item) && item === cantTouchThis) {
         item.y = -1000
+        game.score += 50
         intangibility()
 
     }
