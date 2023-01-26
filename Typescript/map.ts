@@ -29,6 +29,14 @@ class PenetrableWall extends Wall {
         this.img.src = 'img/Wood_12.png';
     }
 }
+
+class Barrier extends Wall {
+    constructor(x: number, y: number, w: number, h: number) {
+        super(x, y, w, h);
+        this.img = new Image();
+        this.img.src = 'img/rock_pickaxe.png';
+    }
+}
 class Dirt extends Wall {
     constructor(x: number, y: number, w: number, h: number) {
         super(x, y, w, h);
@@ -71,9 +79,10 @@ class Door extends Wall {
     }
 }
 
-let map;
-let walls: object[] = [];
-let floors: object[] = [];
+let map: object;
+let walls: Wall[] = [];
+let floors: Dirt[] = [];
+let barriers: Barrier[] = [];
 let mapOne: string[][] = [
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
     ['-', '0', '0', '0', '0', '-', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '-', '0', '0', '0', '0', '0', '0', '-'],

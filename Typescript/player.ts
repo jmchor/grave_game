@@ -8,10 +8,6 @@ class Player extends Template {
     stepCount: number;
     ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-
-
-
-
     constructor(x: number, y: number, w: number, h: number, color: string) {
         super(x, y, w, h);
         this.velocity = { x: 0, y: 0 };
@@ -30,9 +26,9 @@ class Player extends Template {
         if (this.frameCount % 7 === 0 && this.velocity.x !== 0 || this.frameCount % 5 === 0 && this.velocity.y !== 0)
             this.currentFrame++;
         this.stepCount++;
-        if (this.stepCount % 3 === 0 && this.velocity.x !== 0 || this.stepCount % 10 === 0 && this.velocity.y !== 0) {
-            //@ts-ignore
+        if (this.stepCount % 15 === 0 && this.velocity.x !== 0 || this.stepCount % 10 === 0 && this.velocity.y !== 0) {
             characterSteps.play();
+
         }
         if (this.currentFrame > 2)
             this.currentFrame = 0;

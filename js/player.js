@@ -19,8 +19,7 @@ class Player extends Template {
         if (this.frameCount % 7 === 0 && this.velocity.x !== 0 || this.frameCount % 5 === 0 && this.velocity.y !== 0)
             this.currentFrame++;
         this.stepCount++;
-        if (this.stepCount % 3 === 0 && this.velocity.x !== 0 || this.stepCount % 10 === 0 && this.velocity.y !== 0) {
-            //@ts-ignore
+        if (this.stepCount % 15 === 0 && this.velocity.x !== 0 || this.stepCount % 10 === 0 && this.velocity.y !== 0) {
             characterSteps.play();
         }
         if (this.currentFrame > 2)

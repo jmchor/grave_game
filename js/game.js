@@ -1,5 +1,4 @@
 "use strict";
-//@ts-ignore
 let player;
 let key;
 let pickaxe;
@@ -36,6 +35,7 @@ const game = {
     isUpKeyPressed: false,
     isDownKeyPressed: false,
     wallsAreSolid: true,
+    barriersAreSolid: true,
     isIntangible: false,
     hasItemSpawned: false,
     hasDoorKey: false,
@@ -50,9 +50,7 @@ const game = {
     score: 150,
     randomTime: Math.floor(Math.random() * 30000) + 5000,
     startGame: function () {
-        //@ts-ignore
-        characterSteps = new Sound("audio/stepstone_5.wav", 4, 1, false);
-        //@ts-ignore
+        characterSteps = new Sound("audio/stepshort.wav", 2, 1, false);
         backgroundNoise = new Sound("audio/eerie.mp3", 1, 0.1, true);
         gameOverSound = new Sound("audio/game_over.wav", 1, 0.5, false);
         timer = setInterval(() => {
@@ -70,7 +68,6 @@ const game = {
         game.displayScore();
         game.displayTime();
         game.update();
-        //@ts-ignore
         backgroundNoise.play();
         gameOverSound.stop();
     },
@@ -90,6 +87,7 @@ const game = {
         game.wallsAreSolid = true,
             game.isIntangible = false,
             game.hasItemSpawned = false,
+            game.barriersAreSolid = true,
             keyPlace = [key];
         pickPlace = [pickaxe];
         inventory = [];
@@ -103,7 +101,6 @@ const game = {
             pickaxe.y = 40;
         }
         else if (game.isLevelTwo) {
-            //@ts-ignore
             map = mapTwo;
             player.x = 50;
             player.y = 150;
@@ -149,6 +146,7 @@ const game = {
         encounterEnemy(monk);
         walls = [];
         floors = [];
+        barriers = [];
         inventory = [];
         if (game.isGamePaused)
             return;
@@ -199,6 +197,18 @@ const game = {
             if (player.detectCollision(floor)) {
                 previousY = player.y - player.velocity.y / 1.5;
                 previousX = player.x - player.velocity.x / 1.5;
+                player.velocity.x = 0;
+                player.velocity.y = 0;
+                player.x = previousX;
+                player.y = previousY;
+            }
+        });
+        barriers.forEach(barrier => {
+            let previousY;
+            let previousX;
+            if (player.detectCollision(barrier) && game.barriersAreSolid) {
+                previousY = player.y - player.velocity.y;
+                previousX = player.x - player.velocity.x;
                 player.velocity.x = 0;
                 player.velocity.y = 0;
                 player.x = previousX;

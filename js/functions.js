@@ -24,7 +24,6 @@ function getKey() {
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             trapScreen.style.display = 'flex';
-            //@ts-ignore
             backgroundNoise.stop();
         }, 1000 + 500);
     }
@@ -32,6 +31,7 @@ function getKey() {
 function getPickaxe() {
     if (player.detectCollision(pickaxe)) {
         game.hasPickaxe = true;
+        game.barriersAreSolid = false;
     }
     if (pickPlace.includes(pickaxe)) {
         pickaxe.draw();
@@ -58,7 +58,6 @@ function solveLevel() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         nextLevel.style.display = 'flex';
         nextLevel.innerHTML = `You escaped after ${game.getMinutes()} minutes and ${game.getSeconds()} seconds <br> <br> Your score was ${game.score} <br> <br> The Next Level will start soon! `;
-        //@ts-ignore
         backgroundNoise.stop();
         setTimeout(() => {
             game.isLevelOne = false;
@@ -80,7 +79,6 @@ function solveLevel() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         winScreen.style.display = 'flex';
         winScore.innerHTML = `You escaped after ${game.getMinutes()} minutes and ${game.getSeconds()} seconds <br> <br> Your score was ${game.score + levelOneScore}`;
-        //@ts-ignore
         backgroundNoise.stop();
         game.isLevelTwo = false;
         game.isLevelOne = true;
@@ -102,7 +100,6 @@ function encounterEnemy(enemy) {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         loseScreen.style.display = 'flex';
         loseScore.innerHTML = `The ghouls got to you after ${game.getMinutes()} minutes and ${game.getSeconds()} seconds <br> <br> Your score was ${game.score}`;
-        //@ts-ignore
         backgroundNoise.stop();
     }
 }
@@ -145,7 +142,10 @@ function drawMap() {
                     }
                     break;
                 case 'P':
-                    if (!game.hasDoorKey || !game.hasPickaxe) {
+                    if (game.hasPickaxe) {
+                        barriers.push(new Barrier(25 * count, 25 * index, 25, 25));
+                    }
+                    else {
                         walls.push(new Wall(25 * count, 25 * index, 25, 25));
                     }
                     break;
@@ -160,12 +160,13 @@ function drawMap() {
         });
     });
     walls.forEach(wall => {
-        //@ts-ignore
         wall.draw();
     });
     floors.forEach(floor => {
-        //@ts-ignore
         floor.draw();
+    });
+    barriers.forEach(barrier => {
+        barrier.draw();
     });
     ctx.fillStyle = '#938d7d';
     ctx.fillRect(0, 715, 1200, 85);
