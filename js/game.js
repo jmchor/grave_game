@@ -11,6 +11,7 @@ let currentFrame;
 let score;
 let timer;
 let itemTimer;
+let remainingTime;
 let ghoul;
 let ghoul2;
 let skeleton;
@@ -50,12 +51,19 @@ const game = {
     score: 150,
     randomTime: Math.floor(Math.random() * 30000) + 5000,
     startGame: function () {
-        characterSteps = new Sound("audio/stepshort.wav", 2, 1, false);
+        characterSteps = new Sound("audio/stepshort.wav", 2, 0.1, false);
         backgroundNoise = new Sound("audio/eerie.mp3", 1, 0.1, true);
         gameOverSound = new Sound("audio/game_over.wav", 1, 0.5, false);
         timer = setInterval(() => {
             currentTime += 1;
             game.score -= 1;
+            if (game.isIntangible) {
+                remainingTime -= 1;
+            }
+            if (remainingTime === 0) {
+                game.isIntangible = false;
+                remainingTime = 5;
+            }
         }, 1000);
         itemTimer = setTimeout(() => {
             game.hasItemSpawned = true;
@@ -101,6 +109,9 @@ const game = {
             pickaxe.y = 40;
         }
         else if (game.isLevelTwo) {
+            canvas.style.backgroundImage = "url('img/Tileable7.png')";
+            canvas.style.backgroundSize = '300px';
+            canvas.style.backgroundRepeat = 'repeat';
             map = mapTwo;
             player.x = 50;
             player.y = 150;
@@ -173,7 +184,11 @@ const game = {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawMap();
         game.displayScore();
-        // player.inventory+()
+        if (game.isIntangible) {
+            ctx.fillStyle = 'black';
+            ctx.font = '40px "Work Sans"';
+            ctx.fillText(`Intangibility: 0${remainingTime}`, 650, 770);
+        }
         walls.forEach(wall => {
             let previousY;
             let previousX;
@@ -246,6 +261,7 @@ if (game.isLevelOne && game.isLevelTwo === false) {
     key = new Item(275, 260, 50, 50, 'img/key.png');
     pickaxe = new Item(160, 40, 50, 50, 'img/pickaxe2.png');
     cantTouchThis = new Item(745, 625, 40, 40, 'img/item.png');
+    remainingTime = 5;
     lever = new Item(1070, 650, 30, 30, 'img/Tile_21.png');
     leverPulled = new Item(1070, 650, 30, 30, 'img/Tile_21_activated.png');
     currentTime = 0;
@@ -279,7 +295,7 @@ if (game.isLevelTwo && game.isLevelOne === false) {
     ghoul = new Ghoul(400, 300, 50, 50, { x1: 400, y1: 300, x2: 400, y2: 520, x3: 800, y3: 520, x4: 800, y4: 300 });
     ghoul2 = new Ghoul(300, 50, 50, 50, { x1: 300, y1: 50, x2: 300, y2: 150, x3: 600, y3: 150, x4: 600, y4: 50 });
     skeleton = new Skeleton(1100, 302, 45, 45, { x: -3, y: 0 });
-    skeleton2 = new Skeleton(100, 300, 50, 50, { x: 0, y: -3 });
+    skeleton2 = new Skeleton(0, 0, 50, 50, { x: -3, y: 0 });
     skeleton3 = new Skeleton(880, 520, 50, 50, { x: 0, y: 3 });
     skeleton4 = new Skeleton(470, 30, 50, 50, { x: -3, y: 0 });
     monk = new Monk(165, 645, 50, 50, { x: 2, y: 0 });
