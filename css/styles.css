@@ -89,3 +89,12 @@ body {
 	font-size: 50px;
 	font-family: 'Work Sans';
 }
+
+
+#gem {
+	position: absolute;
+	top: 78%;
+	left: 32%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
