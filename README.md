@@ -20,7 +20,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 ## Backlog
 
 - ~power ups: intangibility from monsters~
-- ~powerups appear after random time~
+- ~power ups appear after random time~
 - ~pause/unpause~
 - ~player inventory: display keys~
 - ~step and background noise~
@@ -59,7 +59,7 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 ### player.js
 
--holds the Player Class
+holds the Player Class
 
 ### ghoul.js
 
