@@ -84,6 +84,7 @@ const game = {
     restartGame: function () {
         gameOverSound.stop()
         currentTime = 0;
+        game.score = 150;
         clearInterval(timer);
         clearTimeout(itemTimer);
         game.isGameOver = false;
@@ -109,9 +110,7 @@ const game = {
             pickaxe.y = 40;
         }
         else if (game.isLevelTwo) {
-            canvas.style.backgroundImage = "url('img/muddy_ground.png')";
-            canvas.style.backgroundSize = '300px';
-            canvas.style.backgroundRepeat = 'repeat';
+
             //@ts-ignore
             map = mapTwo;
             player.x = 50;
@@ -262,6 +261,9 @@ if (game.isLevelOne && game.isLevelTwo === false) {
     inventory = [];
 }
 if (game.isLevelTwo && game.isLevelOne === false) {
+    canvas.style.backgroundImage = "url('img/Tileable7.png')";
+    canvas.style.backgroundSize = '300px';
+    canvas.style.backgroundRepeat = 'repeat';
     player = new Player(50, 610, 50, 50, 'brown');
     door = new Door(1070, 0, 60, 80);
     key = new Item(275, 260, 50, 50, 'img/key.png');
