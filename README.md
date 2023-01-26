@@ -10,12 +10,12 @@ The Grave is a maze of walls the player has to maneuver through. In order to esc
 
 - ~one player character who can move in four directions (vertically and horizontally)~
 - ~walls on map are impenetrable~
-- ~player can pick up items (key, powerup)~
+- ~player can pick up items (key, power up)~
 - ~key unlocks door to escape~
 - power up makes player briefly invincible
 - ~ghosts/zombies/ghouls walk the tomb in either horizontal or vertical paths~
 - ~ghosts kill player~
-- ~time based high score (subtracting from a fixed highscore every second)~
+- ~time based high score (subtracting from a fixed high score every second)~
 
 ## Backlog
 
