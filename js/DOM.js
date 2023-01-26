@@ -37,28 +37,24 @@ document.addEventListener('keyup', function (e) {
     switch (e.key) {
         case 'ArrowLeft':
             game.isLeftKeyPressed = false;
-            //@ts-ignore
             characterSteps.stop();
             player.velocity.x = 0;
             player.velocity.y = 0;
             break;
         case 'ArrowRight':
             game.isRightKeyPressed = false;
-            //@ts-ignore
             characterSteps.stop();
             player.velocity.x = 0;
             player.velocity.y = 0;
             break;
         case 'ArrowUp':
             game.isUpKeyPressed = false;
-            //@ts-ignore
             characterSteps.stop();
             player.velocity.x = 0;
             player.velocity.y = 0;
             break;
         case 'ArrowDown':
             game.isDownKeyPressed = false;
-            //@ts-ignore
             characterSteps.stop();
             player.velocity.x = 0;
             player.velocity.y = 0;
