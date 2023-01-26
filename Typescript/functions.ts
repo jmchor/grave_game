@@ -17,7 +17,7 @@ function getKey() {
         let inventoryKey = new Item(240, 730, 50, 50, 'img/key.png');
         inventoryKey.draw();
     }
-    if (game.hasDoorKey && !game.hasPickaxe) {
+    if (game.hasDoorKey && !game.hasPickaxe && game.isLevelOne) {
         setTimeout(() => {
             game.isGameOver = true;
             game.isGamePaused = true;
@@ -110,15 +110,26 @@ function encounterEnemy(enemy: Ghoul | Skeleton | Monk ) {
 }
 function intangibility() {
     game.isIntangible = true;
+
     setTimeout(() => {
         game.isIntangible = false;
-    }, 4000);
+    }, 5000);
+
+
+
+
+
 }
 function getPowerUp(item: Item) {
+
     if (player.detectCollision(item) && item === cantTouchThis) {
         item.y = -1000;
         game.score += 50;
         intangibility();
+
+
+
+
     }
 }
 function drawMap() {
@@ -195,4 +206,11 @@ function drawMap() {
     ctx.strokeRect(3, 715, 208, 83);
     ctx.strokeRect(211, 715, 985, 83);
     ctx.strokeRect(990, 715, 208, 83);
+
+
+
+
+
+
+
 }
